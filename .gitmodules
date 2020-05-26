@@ -13,3 +13,6 @@
 [submodule "weather_microservice"]
 	path = weather_microservice
 	url = https://github.com/beuthbot/weather_microservice.git
+[submodule "mensa_microservice"]
+	path = mensa_microservice
+	url = https://github.com/beuthbot/mensa_microservice.git
