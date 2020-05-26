@@ -1,3 +1,6 @@
 [submodule "gateway"]
 	path = gateway
 	url = https://github.com/beuthbot/gateway.git
+[submodule "registry"]
+	path = registry
+	url = https://github.com/beuthbot/registry.git
