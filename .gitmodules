@@ -4,3 +4,6 @@
 [submodule "registry"]
 	path = registry
 	url = https://github.com/beuthbot/registry.git
+[submodule "deconcentrator-js"]
+	path = deconcentrator-js
+	url = https://github.com/beuthbot/deconcentrator-js.git
