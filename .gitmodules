@@ -10,3 +10,6 @@
 [submodule "rasa"]
 	path = rasa
 	url = https://github.com/beuthbot/rasa.git
+[submodule "weather_microservice"]
+	path = weather_microservice
+	url = https://github.com/beuthbot/weather_microservice.git
