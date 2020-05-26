@@ -7,3 +7,6 @@
 [submodule "deconcentrator-js"]
 	path = deconcentrator-js
 	url = https://github.com/beuthbot/deconcentrator-js.git
+[submodule "rasa"]
+	path = rasa
+	url = https://github.com/beuthbot/rasa.git
