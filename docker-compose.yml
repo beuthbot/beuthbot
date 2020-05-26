@@ -1,0 +1,71 @@
+version: '3.7'
+services:
+  # === -----------------------------
+  deconcentrator:
+    build: deconcentrator-js
+    restart: unless-stopped
+    ports:
+      - 8338:8338
+    environment:
+      - RASA_ENDPOINT
+
+  # === -----------------------------
+  gateway:
+    build: gateway
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - DECONCENTRATOR_ENDPOINT
+      - REGISTRY_ENDPOINT
+
+  # === -----------------------------
+  registry:
+    build: registry
+    restart: unless-stopped
+    ports:
+      - 9922:3000
+    environment:
+      - MENSA_ENDPOINT
+      - WETTER_ENDPOINT
+      - OEFFNUNGSZEITEN_ENDPOINT
+
+  # === -----------------------------
+  rasa:
+    image: rasa/rasa:1.6.0-spacy-de
+    restart: unless-stopped
+    ports:
+      - 5005:5005
+    volumes:
+      - ./rasa/docker/rasa-app-data:/app
+    command:
+      - run
+      - --enable-api
+      - --cors
+      - "*"
+  duckling:
+    image: rasa/duckling:0.1.6.2
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+
+  # === -----------------------------
+  mensa:
+    build: mensa_microservice
+    restart: unless-stopped
+    ports:
+      - 9950:8000
+
+  # === -----------------------------
+  weather:
+    build: weather_microservice
+    restart: unless-stopped
+    ports:
+      - 9951:7000
+    environment:
+      - WEATHER_API_KEY
+
+networks:
+  default:
+    external:
+      name: beuthbot_network
