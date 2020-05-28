@@ -1,5 +1,7 @@
 #BeuthBot
 
+![Icon](.documentation/BeuthBotIcon.png =100x100 "Icon")
+
 ## Installation
 
 ```shell script
