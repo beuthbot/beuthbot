@@ -1,18 +1,14 @@
 version: '3.7'
+
 services:
-  # === -----------------------------
-  deconcentrator:
-    build: deconcentrator-js
-    restart: unless-stopped
-    ports:
-      - 8338:8338
-    environment:
-      - RASA_ENDPOINT
 
   # === -----------------------------
   gateway:
     build: gateway
     restart: unless-stopped
+    links:
+      - deconcentrator
+      - registry
     ports:
       - 3000:3000
     environment:
@@ -20,15 +16,28 @@ services:
       - REGISTRY_ENDPOINT
 
   # === -----------------------------
+  deconcentrator:
+    build: deconcentrator-js
+    restart: unless-stopped
+    links:
+      - rasa
+    ports:
+      - 8338:8338
+    environment:
+      - RASA_ENDPOINT
+
+  # === -----------------------------
   registry:
     build: registry
     restart: unless-stopped
+    links:
+      - mensa
+      - weather
     ports:
       - 9922:3000
     environment:
       - MENSA_ENDPOINT
       - WETTER_ENDPOINT
-      - OEFFNUNGSZEITEN_ENDPOINT
 
   # === -----------------------------
   rasa:
@@ -64,8 +73,3 @@ services:
       - 9951:7000
     environment:
       - WEATHER_API_KEY
-
-networks:
-  default:
-    external:
-      name: beuthbot_network
