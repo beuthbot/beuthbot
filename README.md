@@ -1,6 +1,8 @@
 #BeuthBot
 
-![Icon](.documentation/BeuthBotIcon.png =100x100 "Icon")
+![Icon](.documentation/BeuthBotIcon100.png "Icon")
+
+> Ein enorm intelligenter, messenger-unabhängiger Chatbot.
 
 ## Installation
 
@@ -39,4 +41,6 @@ $ curl http://localhost:3000          # Hello from BeuthBot Gateway
 | mensa             | 9950 | 8000 |
 | weather           | 9951 | 7000 |
 
+## Bot Clients
 
+* [telegram-bot](https://github.com/beuthbot/telegram-bot)
