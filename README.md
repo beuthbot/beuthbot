@@ -1,4 +1,4 @@
-#BeuthBot
+# BeuthBot
 
 ![Icon](.documentation/BeuthBotIcon100.png "Icon")
 
