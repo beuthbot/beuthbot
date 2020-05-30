@@ -1,31 +1,32 @@
-<uml>
 @startuml
 
-rectangle "Telegram Bot" as TGB
-rectangle "Gateway" as GW
-rectangle "DeconcentratorJS" as DC
-rectangle "Registry" as R
-
-
-
-package "NLU" {
-rectangle "Rasa" as RA
+actor "User" as U
+rectangle "telgram-bot" as TGB
+package "BeuthBot" {
+  rectangle "gateway" as GW
+  rectangle "deconcentrator-js" as DC
+  rectangle "registry" as RE
+  package "NLU" {
+    rectangle "rasa" as RA
+  }
+  package "Services" {
+    rectangle "weather" as WS
+    rectangle "mensa" as MS
+  }
 }
 
-package "Services" {
-rectangle "Wetterservice" as W
-rectangle "Mensaservice" as M
-}
-
+U -left-> TGB
 TGB -down-> GW
 GW -up-> TGB
-GW -down-> DC : Request
-DC -up-> GW : Intent with Data
+GW -down-> DC
+DC -up-> GW
 DC -right-> RA
 RA -left-> DC
-GW -right-> R : Intent Request with Data + User
-R -left-> GW : Answer From Service
-R -right-> M
-R -right-> W
+GW -right-> RE
+RE -left-> GW
+RE -right-> MS
+MS -left-> RE
+RE -right-> WS
+WS -left-> RE
 
 @enduml
