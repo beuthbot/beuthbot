@@ -42,9 +42,20 @@ $ curl http://localhost:3000          # Hello from BeuthBot Gateway
 | mensa             | 9950 | 8000 |
 | weather           | 9951 | 7000 |
 
-## Model
+## Packages / Submodules
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/beuthbot/beuthbot/master/.documentation/components.txt)
+| Packagename | External Port | Internal Port | 
+| ------- | ------------: | ------------: |
+| gateway           | 3000 | 3000 |
+| deconcentrator-js | 8338 | 8338 |
+| rasa              | 5005 | 5005 |
+| registry          | 9922 | 3000 |
+| mensa             | 9950 | 8000 |
+| weather           | 9951 | 7000 |
+
+## Components Model
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
 
 
 ## Bot Clients
