@@ -30,6 +30,7 @@ $ docker-compose up -d
 $ curl http://localhost:3000          # Hello from BeuthBot Gateway
 ```
 
+
 ## Default Ports
 
 | Service | External Port | Internal Port | 
@@ -40,6 +41,11 @@ $ curl http://localhost:3000          # Hello from BeuthBot Gateway
 | registry          | 9922 | 3000 |
 | mensa             | 9950 | 8000 |
 | weather           | 9951 | 7000 |
+
+## Model
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/beuthbot/beuthbot/master/.documentation/components.txt)
+
 
 ## Bot Clients
 
