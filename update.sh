@@ -2,7 +2,7 @@
 
 # short and simple bash script for simplifying deployment process on
 # on productive machine.  make shure there is a `.env` file specifying
-# the telegram token before running this script.
+# the needed endpoints and tokens.
 
 # print commands
 set -x
