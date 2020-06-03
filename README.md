@@ -8,13 +8,17 @@
 
 #### Production
 
-* Docker version 19.03.8
-* docker-compose version 1.25.0
+* `Docker` version 19.03.8
+* `docker-compose ` version 1.25.0
 
 #### Development
 
-* Docker version 19.03.8
-* docker-compose version 1.25.0
+* `Docker` version 19.03.8
+* `docker-compose ` version 1.25.0
+* `node` & `npm` (Optional)
+* The IDE of your choice
+
+Lower versions of `Docker` and `docker-compose ` may work but are not tested.
 
 ## Installation
 
@@ -53,29 +57,40 @@ $ git checkout master
 
 | Service | External Port | Internal Port |
 | ------- | ------------: | ------------: |
-| gateway           | 3000 | 3000 |
-| deconcentrator-js | 8338 | 8338 |
-| rasa              | 5005 | 5005 |
-| registry          | 9922 | 3000 |
-| mensa             | 9950 | 8000 |
-| weather           | 9951 | 7000 |
+| [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 |
+| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |
+| [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |
+| [registry](https://github.com/beuthbot/registry) | 9922 | 3000 |
+| [mensa](https://github.com/beuthbot/mensa) | 9950 | 8000 |
+| [weather](https://github.com/beuthbot/weather) | 9951 | 7000 |
 
 ## Packages / Submodules
 
 | **Packagename** | **About** | **Language** |
 | --------------- | --------- | :----------: |
-| gateway | Receives messages from bot clients via a API. | JS |
-| deconcentrator-js | Asks multiple NLU processors for the interpretation of a given message | JS |
-| rasa | tbd | Python |
-| registry | tbd | JS |
-| mensa | tbd | JS |
-| weather | tbd | JS |
+| [gateway](https://github.com/beuthbot/gateway) | Receives messages from bot clients via a API. | JS |
+| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | Asks multiple NLU processors for the interpretation of a given message | JS |
+| [rasa](https://github.com/beuthbot/rasa) | tbd | Python |
+| [registry](https://github.com/beuthbot/registry) | tbd | JS |
+| [mensa](https://github.com/beuthbot/mensa) | tbd | JS |
+| [weather](https://github.com/beuthbot/weather) | tbd | JS |
+
+#### Components Model
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
 
 ## Technologies
 
-## Components Model
+#### Development
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
+* `Docker`
+* `docker-compose `
+* `node` & `npm`
+
+#### Deployment
+
+* `Docker` (Tested with version 19.03.8)
+* `docker-compose ` (Tested with version 1.25.0)
 
 ## Bot Clients
 
