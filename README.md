@@ -18,7 +18,7 @@
 
 ## Installation
 
-Thie repository uses submodules, and will not run unless you clone recursively.
+This repository uses submodules, and will not run unless you clone recursively.
 
 ```shell script
 
@@ -43,6 +43,12 @@ $ curl http://localhost:3000          # prints: Hello from BeuthBot Gateway
 
 For development you may want to start the docker containers seperatly. There are `docker-compose.yml` files in each (sub)project which can be used to start the services in serperate containers. You can simply start the `Node.js` server, too, for some projects without using docker. Note the following table which gives an overview about the ports used by the containers and about the port mapping.
 
+When you are developing a submodule and want to push the updates you may get an error saying "HEAD detached at ...". If so, you need to checkout a brancht. Mostly the `master`.
+
+``` shell script
+$ git checkout master
+```
+
 ## Default Ports
 
 | Service | External Port | Internal Port |
@@ -56,14 +62,14 @@ For development you may want to start the docker containers seperatly. There are
 
 ## Packages / Submodules
 
-| **Packagename** | **About** |
-| ----------- | ----- |
-| gateway | Receives messages from bot clients via a API. |
-| deconcentrator-js | Asks multiple NLU processors for the interpretation of a given message |
-| rasa | tbd |
-| registry | tbd |
-| mensa | tbd |
-| weather | tbd |
+| **Packagename** | **About** | **Language** |
+| --------------- | --------- | :----------: |
+| gateway | Receives messages from bot clients via a API. | JS |
+| deconcentrator-js | Asks multiple NLU processors for the interpretation of a given message | JS |
+| rasa | tbd | Python |
+| registry | tbd | JS |
+| mensa | tbd | JS |
+| weather | tbd | JS |
 
 ## Technologies
 
