@@ -1,0 +1,13 @@
+@startuml
+
+left to right direction
+rectangle "BeuthBot" {
+  rectangle "rasa" as RA
+  rectangle "deconcentrator-js" as DC
+  rectangle "gateway" as GW
+  rectangle "weather" as WS
+  rectangle "mensa" as MS
+  rectangle "registry" as RE
+}
+
+@enduml

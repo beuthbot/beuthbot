@@ -92,6 +92,12 @@ $ git checkout master
 * `Docker` (Tested with version 19.03.8)
 * `docker-compose ` (Tested with version 1.25.0)
 
+## Motivation
+
+
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repository.txt)
+
 ## Bot Clients
 
 * [telegram-bot](https://github.com/beuthbot/telegram-bot)
