@@ -131,7 +131,7 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 
 ## Motivation
 
-Facing the problem having a complex 
+Facing the problem having a complex project structure 
 
 ![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repository.txt)
 
