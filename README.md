@@ -4,9 +4,9 @@
 
 > An enormously intelligent, messenger-independent chatbot.
 
-## Requierments
+## Requirements
 
-#### Production
+#### Release
 
 * `Docker` version 19.03.8
 * `docker-compose ` version 1.25.0
@@ -89,7 +89,6 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 | [registry](https://github.com/beuthbot/registry) | 9922 | 3000 |
 | [mensa](https://github.com/beuthbot/mensa) | 9950 | 8000 |
 | [weather](https://github.com/beuthbot/weather) | 9951 | 7000 |
-
 
 
 ## Packages / Submodules
@@ -177,20 +176,18 @@ $ cp .env.sample .env && vim .env
 $ docker-compose up -d
 ```
 
-> Having this project makes it also easier to have and organize multiple **distributions** of this project. It also allows us having a global state / version of the BeuthBot.
+> Having this project organized with submodules makes it also easier to have and organize multiple **distributions** of this project. It further allows us having a global state / version of the BeuthBot.
 
 ## Bot Clients
 
 * [telegram-bot](https://github.com/beuthbot/telegram-bot)
 
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available see [tags on this repository](https://github.com/beuthbot/beuthbot/releases)
+
 ## Authors
 
-* [Abirathan](https://github.com/Abirathan)
-* [Chr1ssy](https://github.com/Chr1ssy)
-* [lukasdanckwerth](https://github.com/lukasdanckwerth)
-* [nandtropy](https://github.com/nandtropy)
-* [Onkilchen](https://github.com/Onkilchen)
-* [T0biWan](https://github.com/T0biWan)
-* [Kai Nessig](https://github.com/tiberius)
-* [Timo Bruns](https://github.com/TimoBruns)
+* Lukas Danckwerth - Initial work - [GitHub](https://github.com/lukasdanckwerth)
 
+See also [here](https://github.com/beuthbot/beuthbot/graphs/contributors) for a list of contributors
