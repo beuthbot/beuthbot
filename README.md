@@ -53,7 +53,7 @@ When you are developing a submodule and want to push the updates you may get an 
 $ git checkout master
 ```
 
-## Default Ports
+## Default Ports of Services
 
 | Service | External Port | Internal Port |
 | ------- | ------------: | ------------: |
@@ -74,6 +74,11 @@ $ git checkout master
 | [registry](https://github.com/beuthbot/registry) | tbd | JS |
 | [mensa](https://github.com/beuthbot/mensa) | tbd | JS |
 | [weather](https://github.com/beuthbot/weather) | tbd | JS |
+
+### Other Packages
+| **Packagename** | **About** | **Language** |
+| --------------- | --------- | :----------: |
+| .documentation | | |
 
 #### Components Model
 
