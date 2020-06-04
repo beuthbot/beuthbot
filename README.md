@@ -131,15 +131,53 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 
 ## Motivation
 
-Facing the problem having a complex project structure 
+Fulfilling the following requirements ([Link](https://wiki.ziemers.de/doku.php?id=wiki:software:beuthbot:berichte:ws2019:zwischen#Requirement+Analysis+BeuthBot), Section: 'Requirement Analysis BeuthBot') `/NF300/`, `/NF301/`, `/NF302/`, `/NF400/` it's obvious to have the BeuthBot splitted up into many (small) repositories. Especially when having the requirements to have the project as modular as possible and to have the project easy extendable. 
 
-Before this repository:
+#### BeuthBot's structure before this repository:
 
 ![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repositories-old.txt)
 
-With this repository:
+But when deploying on a (productive) machine we faced the problem cloning at least a half-dozen repositories, editing the `.env` files of these projects and invoking each `docker-compose.yml` individually. This means at least typing in the following commands **six** times:
+
+```shell script
+# clone repository
+$ git clone https://github.com/beuthbot/$PROJECT_NAME.git
+
+# change into directory
+$ cd $PROJECT_NAME
+
+# edit environment file
+$ cp .env.sample .env && vim .env
+
+# start project
+$ docker-compose up -d
+```
+
+Not even for us this is / was a huge workload before starting development and / or when deploying the project. Facing this problem we started writing bash scripts updating and editing these projects. But in the end that didn't felt right so we decided having a master project (this repository) containing and combing the packages of the BeuthBot and making it possible running the whole system with one `.env` and one `docker-compose.yml` file.
+
+> We **did not** remove the `docker-compose.yml` files of the components in order to have the option to start all services seperatly.
+
+#### BeuthBot's structure with this repository:
 
 ![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repository.txt)
+
+With this repository it became way easier to manage, develope and deploy the BeuthBot. The following collection of commands which can be used to **fully** deploy the BeuthBot demonstrates that. Note the `--recursive` argument for the git `clone` command which make git fetching the submodules, too. Have a look at the section [Working with Submodules](#Working-with-Submodules) for further information about working with submodules. 
+
+```shell script
+# clone project
+$ git clone --recursive https://github.com/beuthbot/beuthbot.git
+
+# change into directory
+$ cd beuthbot
+
+# edit environment file
+$ cp .env.sample .env && vim .env
+
+# start BeuthBot
+$ docker-compose up -d
+```
+
+> Having this project makes it also easier to have and organize multiple **distributions** of this project. It also allows us having a global state / version of the BeuthBot.
 
 ## Bot Clients
 
