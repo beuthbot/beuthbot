@@ -79,19 +79,13 @@ $ git checkout master
 
 Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/article.html) for further information about git submodules.
 
-## Default Ports of Services
-
-| Service | External Port | Internal Port |
-| ------- | ------------: | ------------: |
-| [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 |
-| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |
-| [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |
-| [registry](https://github.com/beuthbot/registry) | 9922 | 3000 |
-| [mensa](https://github.com/beuthbot/mensa) | 9950 | 8000 |
-| [weather](https://github.com/beuthbot/weather) | 9951 | 7000 |
-
-
 ## Packages / Submodules
+
+#### Components Model
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
+
+#### Functionality
 
 | **Packagename** | **About** | **Language** |
 | --------------- | --------- | :----------: |
@@ -102,18 +96,27 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 | [mensa](https://github.com/beuthbot/mensa) | The mensa service of the BeuthBot. It knows whether the Mensa is open or closed. | JS |
 | [weather](https://github.com/beuthbot/weather) | The weather service. | JS |
 
-
-
-### Other Packages
+#### Other Packages
 
 | **Packagename** | **About** | **Language** |
 | --------------- | --------- | :----------: |
 | .documentation | Contains mostly text, image and markdown files with information and documentation about this repository. | - |
 | scripts | Contains scripts to automate tasks. | BASH |
 
-#### Components Model
+#### Default Ports of Services
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
+| Service | External Port | Internal Port |
+| ------- | ------------: | ------------: |
+| [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 |
+| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |
+| [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |
+| [registry](https://github.com/beuthbot/registry) | 9922 | 3000 |
+| [mensa](https://github.com/beuthbot/mensa) | 9950 | 8000 |
+| [weather](https://github.com/beuthbot/weather) | 9951 | 7000 |
+
+## Domain
+
+
 
 ## Technologies
 
@@ -176,11 +179,15 @@ $ cp .env.sample .env && vim .env
 $ docker-compose up -d
 ```
 
-> Having this project organized with submodules makes it also easier to have and organize multiple **distributions** of this project. It further allows us having a global state / version of the BeuthBot.
+> Having this project organized with submodules allows us having a global state or version of the BeuthBot. It further makes it easier to have and organize multiple **distributions** of this project.
 
 ## Bot Clients
 
 * [telegram-bot](https://github.com/beuthbot/telegram-bot)
+
+## Guidelines
+
+
 
 ## Versioning
 
