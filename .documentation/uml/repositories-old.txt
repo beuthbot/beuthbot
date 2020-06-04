@@ -1,0 +1,10 @@
+@startuml
+
+[rasa] as RA
+[deconcentrator-js] as DC
+[gateway] as GW
+[weather] as WS
+[mensa] as MS
+[registry] as RE
+
+@enduml

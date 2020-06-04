@@ -133,6 +133,12 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 
 Facing the problem having a complex project structure 
 
+Before this repository:
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repositories-old.txt)
+
+With this repository:
+
 ![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/repository.txt)
 
 ## Bot Clients

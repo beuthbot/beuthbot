@@ -2,12 +2,12 @@
 
 left to right direction
 rectangle "BeuthBot" {
-  rectangle "rasa" as RA
-  rectangle "deconcentrator-js" as DC
-  rectangle "gateway" as GW
-  rectangle "weather" as WS
-  rectangle "mensa" as MS
-  rectangle "registry" as RE
+  [rasa] as RA
+  [deconcentrator-js] as DC
+  [gateway] as GW
+  [weather] as WS
+  [mensa] as MS
+  [registry] as RE
 }
 
 @enduml
