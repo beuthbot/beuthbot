@@ -16,3 +16,6 @@
 [submodule "mensa_microservice"]
 	path = mensa_microservice
 	url = https://github.com/beuthbot/mensa_microservice.git
+[submodule "database"]
+	path = database
+	url = https://github.com/beuthbot/database.git
