@@ -4,6 +4,20 @@
 
 > An enormously intelligent, messenger-independent chatbot.
 
+## Contents
+
+- [Requirements](#Requirements)
+- [Installation](#Installation)
+- [Project Structure / Packages](#Project-Structure-/-Packages)
+  - [Components Model](#Components-Model)
+- [Components](#Components)
+- [Overview of Docker containers](#Overview-of-Docker-containers)
+- [Domain](#Domain)
+- [Technologies](#Technologies)
+- [Motivation](#Motivation)
+- [BeuthBot Clients](#BeuthBot-Clients)
+- [Authors](#Authors)
+
 ## Requirements
 
 #### Release
@@ -81,13 +95,9 @@ $ git checkout master
 
 Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/article.html) for further information about git submodules.
 
-## Packages / Submodules
+## Project Structure / Components
 
-#### Components Model
-
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
-
-#### Functionality
+#### Submodules
 
 | **Packagename** | **About** | **Language** |
 | --------------- | --------- | :----------: |
@@ -105,22 +115,33 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 | .documentation | Contains mostly text, image and markdown files with information and documentation about this repository. | - |
 | scripts | Contains scripts to automate tasks. | BASH |
 
-#### Default Ports of Services
+### Components Model
 
-| Service | External Port | Internal Port |
-| ------- | ------------: | ------------: |
-| [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 |
-| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |
-| [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |
-| [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |
-| [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |
-| [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/beuthbot/beuthbot/master/.documentation/uml/components.txt)
+
+## Overview of Docker containers
+
+| Container | Internal Port | External Port | Docker Image |
+| ------- | ------------: | ------------: | --- |
+| [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 | node:11-alpine |
+| [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |node:11-alpine|
+| [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |rasa/rasa:1.6.0-spacy-de|
+| :arrow_right_hook: rasa/duckling | 8000 | 8000 (optional) |rasa/duckling:0.1.6.2|
+| [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |node|
+| [database](https://github.com/beuthbot/database) | 3000 | 9922 |node|
+| :arrow_right_hook: mongo | 27017 | 27017 |mongo:4.0.4|
+| | 27018 | 27018 |"|
+| | 27019 | 27019 |"|
+| [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |node:11-alpine|
+| [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |node:11-alpine|
 
 ## Domain
 
-
+> TBD
 
 ## Technologies
+
+> TBD
 
 #### Development
 
@@ -183,7 +204,7 @@ $ docker-compose up -d
 
 > Having this project organized with submodules allows us having a global state or version of the BeuthBot. It further makes it easier to have and organize multiple **distributions** of this project.
 
-## Bot Clients
+## BeuthBot Clients
 
 * [telegram-bot](https://github.com/beuthbot/telegram-bot)
 
