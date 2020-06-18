@@ -46,7 +46,7 @@ services:
     ports:
       - 5005:5005
     volumes:
-      - ./rasa/docker/rasa-app-data:/app
+      - ./rasa/docker/data:/app
     command:
       - run
       - --enable-api
@@ -55,8 +55,9 @@ services:
   duckling:
     image: rasa/duckling:0.1.6.2
     restart: unless-stopped
-    ports:
-      - 8000:8000
+# LD: it's not necessary that duckling expand it's port.
+#    ports:
+#      - 8000:8000
 
   # === -----------------------------
   mensa:

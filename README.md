@@ -18,6 +18,8 @@
 * `node` & `npm` (Optional)
 * The IDE of your choice
 
+[Installation instructions for Docker](https://docs.docker.com/install/)
+
 Lower versions of `Docker` and `docker-compose ` may work but are not tested.
 
 ## Installation
@@ -110,9 +112,9 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 | [gateway](https://github.com/beuthbot/gateway) | 3000 | 3000 |
 | [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |
 | [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |
-| [registry](https://github.com/beuthbot/registry) | 9922 | 3000 |
-| [mensa](https://github.com/beuthbot/mensa) | 9950 | 8000 |
-| [weather](https://github.com/beuthbot/weather) | 9951 | 7000 |
+| [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |
+| [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |
+| [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |
 
 ## Domain
 
@@ -187,7 +189,25 @@ $ docker-compose up -d
 
 ## Guidelines
 
+## `docker-compose` Cheat Sheet
 
+```bash
+# build and start Containers && serve at localhost:5005 (rasa) and at localhost:8000 (duckling)
+$ docker-compose up
+
+# stop and remove rasa-containers, volumes, images and networks
+$ docker-compose down
+
+# do the same steps as "docker-compose down" 
+# additionally remove declared volumes in Docker-Compose-File
+$ docker-compose down -v
+
+# lists running containers
+$ docker ps
+
+# connect to the container with a bash
+$ docker exec -it <Container-ID> bash
+```
 
 ## Versioning
 
