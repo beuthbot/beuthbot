@@ -19,3 +19,6 @@
 [submodule "database"]
 	path = database
 	url = https://github.com/beuthbot/database.git
+[submodule "database_microservice"]
+	path = database_microservice
+	url = https://github.com/beuthbot/database_microservice.git
