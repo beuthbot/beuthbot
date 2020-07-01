@@ -1,4 +1,66 @@
-# Models of BeuthBot Requests and Answers
+# Domain
+
+
+
+## Message
+
+| Name            | Type      | About | Required |
+| --------------- | --------- | ----- | ------------------ |
+| text | String | The actual text for the bot. |:white_check_mark:|
+| telegram-id | Int | The telegram id of the user. |  |
+
+##### Example JSON of Message
+
+```json
+{
+   "text": "Wie wird das Wetter morgen?",
+   "telegram-id": 12345
+}
+```
+
+
+
+## User
+
+| Property    | Type         | About                                 | Required           |
+| ----------- | ------------ | ------------------------------------- | ------------------ |
+| id          | Integer      | The database id of the BeuthBot user. | :white_check_mark: |
+| telegram-id | Integer      | The telegram id of the user.          |                    |
+| nickname    | String       | Some nickname                         |                    |
+| details     | [Sring: Any] | A dictionary of details.              |                    |
+
+#### Example JSON of Message
+
+```json
+{
+   "id": 12345,
+   "telegram-id": 12345,
+   "nickname": "Al",
+   "details": {
+      "home": "Bonn",
+      "birthday": "23.06.1912",
+      ...
+   }
+}
+```
+
+
+
+## Answere
+
+```json
+{
+   "text": "Wie wird das Wetter morgen?",
+   "answere": "Morgen gibt es Sonnenschein bei 29 Grad.",
+   "history" : [
+      "WeatherService",
+      "registry",
+      "gateway"
+   ]
+}
+```
+
+
 
 ## Messages for `database_microservice`
 
@@ -9,6 +71,8 @@
 | birthday | `detail-birthday` | `date` |
 | meal-preference | `detail-meal-preference` | `meal-preference` |
 |  | `all-details` | ___Means all details.___ |
+
+
 
 ### Example `database-set` #1
 
@@ -55,6 +119,8 @@
 }
 ```
 
+
+
 ### Example `database-set` #2
 
 > "Merke dir, dass ich in Bonn meinen Wohnort habe"
@@ -98,6 +164,8 @@
 }
 ```
 
+
+
 ### Example `database-remove`
 
 > "Lösche meinen Wohnort"
@@ -134,6 +202,8 @@
    ...
 }
 ```
+
+
 
 ### Example `database-get`
 
