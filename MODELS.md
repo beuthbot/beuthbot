@@ -2,13 +2,13 @@
 
 ## Messages for `database_microservice`
 
-| Detailname             | Entity Key      |
-| ---------------------- | --------------- |
-| detail-allergic        | `allergen` |
-| detail-home            | `city`      |
-| detail-birthday        | `date`      |
-| detail-meal-preference | `meal-preference` |
-| all-details | ___Means all details.___ |
+| Detailname             | Detail Key | Entity Key |
+| ---------------------- | --------------- | ---------------------- |
+| allergic | `detail-allergic` | `allergen` |
+| home      | `detail-home` | `city` |
+| birthday | `detail-birthday` | `date` |
+| meal-preference | `detail-meal-preference` | `meal-preference` |
+|  | `all-details` | ___Means all details.___ |
 
 ### Example `database-set` #1
 
