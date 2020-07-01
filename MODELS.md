@@ -19,7 +19,7 @@
    "user": {
       "id": 12345,
       "telegram-id": 12345,
-      "nickname": "Al"
+      "nickname": "Al",
       "details": {
          "home": "Bonn",
          "birthday": "23.06.1912",
@@ -64,7 +64,7 @@
    "user": {
       "id": 12345,
       "telegram-id": 12345,
-      "nickname": "Al"
+      "nickname": "Al",
       "details": {
          "home": "Bonn",
          "birthday": "23.06.1912",
@@ -107,7 +107,7 @@
    "user": {
       "id": 12345,
       "telegram-id": 12345,
-      "nickname": "Al"
+      "nickname": "Al",
       "details": {
          "home": "Bonn",
          "birthday": "23.06.1912",
@@ -144,7 +144,7 @@
    "user": {
       "id": 12345,
       "telegram-id": 12345,
-      "nickname": "Al"
+      "nickname": "Al",
       "details": {
          "home": "Bonn",
          "birthday": "23.06.1912",
