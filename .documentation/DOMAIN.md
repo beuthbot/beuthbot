@@ -62,6 +62,16 @@
 
 
 
+## Error
+
+```
+{
+   "error": "no data received."
+}
+```
+
+
+
 ## Messages for `database_microservice`
 
 | Detailname             | Detail Key | Entity Key |
