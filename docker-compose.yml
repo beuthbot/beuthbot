@@ -74,3 +74,7 @@ services:
       - 9951:7000
     environment:
       - WEATHER_API_KEY
+networks:
+  default:
+    external:
+      name: beuthbot_network
