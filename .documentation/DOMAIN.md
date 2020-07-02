@@ -14,7 +14,7 @@
 ```json
 {
    "text": "Wie wird das Wetter morgen?",
-   "telegram-Id": 12345
+   "telegramId": 12345
 }
 ```
 
