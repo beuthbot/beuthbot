@@ -46,7 +46,7 @@ services:
     ports:
       - 5005:5005
     volumes:
-      - ./rasa/docker/data:/app
+      - ./rasa/app:/app
     command:
       - run
       - --enable-api
