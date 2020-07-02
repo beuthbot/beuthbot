@@ -7,14 +7,14 @@
 | Name            | Type      | About | Required |
 | --------------- | --------- | ----- | ------------------ |
 | text | String | The actual text for the bot. |:white_check_mark:|
-| telegram-id | Int | The telegram id of the user. |  |
+| telegramId | Int | The telegram id of the user. |  |
 
 ##### Example JSON of Message
 
 ```json
 {
    "text": "Wie wird das Wetter morgen?",
-   "telegram-id": 12345
+   "telegram-Id": 12345
 }
 ```
 
@@ -25,7 +25,7 @@
 | Property    | Type         | About                                 | Required           |
 | ----------- | ------------ | ------------------------------------- | ------------------ |
 | id          | Integer      | The database id of the BeuthBot user. | :white_check_mark: |
-| telegram-id | Integer      | The telegram id of the user.          |                    |
+| telegramId | Integer      | The telegram id of the user.          |                    |
 | nickname    | String       | Some nickname                         |                    |
 | details     | [Sring: Any] | A dictionary of details.              |                    |
 
@@ -34,7 +34,7 @@
 ```json
 {
    "id": 12345,
-   "telegram-id": 12345,
+   "telegramId": 12345,
    "nickname": "Al",
    "details": {
       "home": "Bonn",
@@ -184,7 +184,7 @@
 {
    "user": {
       "id": 12345,
-      "telegram-id": 12345,
+      "telegramId": 12345,
       "nickname": "Al",
       "details": {
          "home": "Bonn",
@@ -223,7 +223,7 @@
 {
    "user": {
       "id": 12345,
-      "telegram-id": 12345,
+      "telegramId": 12345,
       "nickname": "Al",
       "details": {
          "home": "Bonn",
