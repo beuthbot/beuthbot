@@ -6,19 +6,27 @@ services:
   gateway:
     build: gateway
     restart: unless-stopped
+    depends_on:
+      - deconcentrator
+      - registry
+      - database
     links:
       - deconcentrator
       - registry
+      - database
     ports:
       - 3000:3000
     environment:
       - DECONCENTRATOR_ENDPOINT
       - REGISTRY_ENDPOINT
+      - DATABASE_ENDPOINT=http://database:3000/users/find
 
   # === -----------------------------
   deconcentrator:
     build: deconcentrator-js
     restart: unless-stopped
+    depends_on:
+      - rasa
     links:
       - rasa
     ports:
@@ -43,6 +51,8 @@ services:
   rasa:
     image: rasa/rasa:1.6.0-spacy-de
     restart: unless-stopped
+    depends_on:
+      - duckling
     ports:
       - 5005:5005
     volumes:
@@ -52,12 +62,37 @@ services:
       - --enable-api
       - --cors
       - "*"
+
   duckling:
     image: rasa/duckling:0.1.6.2
     restart: unless-stopped
-# LD: it's not necessary that duckling expand it's port.
-#    ports:
-#      - 8000:8000
+
+  # === -----------------------------
+  mongo:
+    image: mongo:4.0.4
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    #      - 27018:27018
+    #      - 27019:27019
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    volumes:
+      # - mongodata:/data/db # needed for me to run container on Windows 10
+      - .database:/data/db # For Mac/Linux
+
+  database:
+    build: database
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - 27000:3000
+    environment:
+      - MONGO_DB_ENDPOINT=mongodb://mongo:27017/users
 
   # === -----------------------------
   mensa:
@@ -74,6 +109,7 @@ services:
       - 9951:7000
     environment:
       - WEATHER_API_KEY
+
 networks:
   default:
     external:
