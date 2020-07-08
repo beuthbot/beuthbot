@@ -22,4 +22,7 @@ yarn-error.log*
 *.sw?
 
 # Database
-.database
+.database/
+
+# development
+docker-compose.dev.*.yml

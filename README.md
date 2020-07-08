@@ -127,21 +127,20 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 | [deconcentrator-js](https://github.com/beuthbot/deconcentrator-js) | 8338 | 8338 |node:11-alpine|
 | [rasa](https://github.com/beuthbot/rasa) | 5005 | 5005 |rasa/rasa:1.6.0-spacy-de|
 | :arrow_right_hook: rasa/duckling | 8000 | 8000 (optional) |rasa/duckling:0.1.6.2|
-| [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |node|
-| [database](https://github.com/beuthbot/database) | 3000 | 9922 |node|
+| [database](https://github.com/beuthbot/database) | 3000 | 27000 |node:11-alpine|
 | :arrow_right_hook: mongo | 27017 | 27017 |mongo:4.0.4|
-| | 27018 | 27018 |"|
-| | 27019 | 27019 |"|
+| [database_microservice](https://github.com/beuthbot/mensa) | 3000 | 27016 |node:11-alpine|
+| [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |node|
 | [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |node:11-alpine|
 | [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |node:11-alpine|
 
 ## Domain
 
-> TBD
+For a detailed Model of the domain the this [link](.documentation/DOMAIN.md).
 
 ## Technologies
 
-> TBD
+The BeuthBot project is mostly developed in JavaScript.
 
 #### Development
 
