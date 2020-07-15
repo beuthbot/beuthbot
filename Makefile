@@ -1,6 +1,6 @@
 
 commands: $(eval .SILENT:)
-	echo "commands:" && echo ""
+	echo "targets:" && echo ""
 	echo "  pull             git pull --recurse-submodules"
 	echo "  reset            git reset HEAD --hard"
 	echo "                   git submodule foreach --recursive 'git reset --hard'"
@@ -15,12 +15,6 @@ commands: $(eval .SILENT:)
 	echo "  deploy           docker-compose -f docker-compose.production.yml down"
 	echo "                   docker-compose -f docker-compose.production.yml up --build --detach"
 	echo ""
-
-update:
-	pull
-	git submodules init
-	git submodules update
-	checkout-master
 
 pull:
 	git pull --recurse-submodules
@@ -42,3 +36,11 @@ deploy:
 	if ! test -f .env ; then echo "No .env file found." ; fi
 	docker-compose -f docker-compose.production.yml down
 	docker-compose -f docker-compose.production.yml up --build --detach
+
+update:
+	git pull --recurse-submodules
+	git submodule init
+	git submodule update
+	git checkout master
+	git submodule foreach --recursive 'git checkout master'
+	git submodule foreach --recursive 'git pull'

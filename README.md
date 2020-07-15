@@ -95,6 +95,30 @@ $ git checkout master
 
 Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/article.html) for further information about git submodules.
 
+### Makefile
+
+Check out the `Makefile` of the repository it bundles some comon tasks for an convenience use with `make`. So for example to checkout the master branch of this repository and of all submodules simply type `make checkout-master` in the command line. Following lists the existing targets.
+
+``````shell
+targets:
+
+  pull             git pull --recurse-submodules
+  reset            git reset HEAD --hard
+                   git submodule foreach --recursive 'git reset --hard'
+  update           pull
+                   git submodules init
+                   git submodules update
+                   checkout-master
+  checkout-master  git checkout master
+                   git submodule foreach --recursive 'git checkout master'
+                   git submodule foreach --recursive 'git pull'
+  up               docker-compose up --build --detach
+  deploy           docker-compose -f docker-compose.production.yml down
+                   docker-compose -f docker-compose.production.yml up --build --detach
+``````
+
+
+
 ## Project Structure / Components
 
 #### Submodules
@@ -207,7 +231,7 @@ $ docker-compose up -d
 
 * [telegram-bot](https://github.com/beuthbot/telegram-bot)
 
-## Guidelines
+
 
 ## `docker-compose` Cheat Sheet
 
