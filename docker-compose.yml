@@ -33,6 +33,7 @@ services:
       - 8338:8338
     environment:
       - RASA_ENDPOINT=http://rasa:5005/model/parse
+      - MIN_CONFIDENCE_SCORE=0.85
     # networks:
     #   - beuthbot
 
