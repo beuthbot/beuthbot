@@ -8,6 +8,8 @@ rectangle "BeuthBot" {
   [weather] as WS
   [mensa] as MS
   [registry] as RE
+  [database] as DB
+  [database_microservice] as DBM
 }
 
 @enduml

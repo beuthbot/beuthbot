@@ -1,32 +1,57 @@
 @startuml
-
 actor "User" as U
 rectangle "telgram-bot" as TGB
 package "BeuthBot" {
   rectangle "gateway" as GW
-  rectangle "deconcentrator-js" as DC
   rectangle "registry" as RE
+  database "cache" as CA
   package "NLU" {
+    rectangle "deconcentrator-js" as DC
     rectangle "rasa" as RA
   }
   package "Services" {
     rectangle "weather" as WS
     rectangle "mensa" as MS
+    rectangle "database" as DBMS
+  }
+  package "Database" {
+    rectangle "database-controller" as DBC
+    database "mongo-db" as MDB
   }
 }
 
-U -left-> TGB
-TGB -down-> GW
-GW -up-> TGB
-GW -down-> DC
-DC -up-> GW
+U -down-> TGB
+
+GW -left-> TGB
+TGB -right-> GW
+
+GW -left-> DC
+DC -right-> GW
+
+GW -down-> RE
+RE -up-> GW
+
 DC -right-> RA
 RA -left-> DC
-GW -right-> RE
-RE -left-> GW
-RE -right-> MS
-MS -left-> RE
-RE -right-> WS
-WS -left-> RE
 
+DBC -right-> MDB
+MDB -left-> DBC
+
+GW -left-> DBC
+DBC -right-> GW
+
+RE -left-> CA
+CA -right-> RE
+
+RE -up-> MS
+MS -down-> RE
+
+RE -up-> WS
+WS -down-> RE
+
+RE -up-> DBMS
+DBMS -down-> RE
+
+DBMS -down-> DBC
+DBC -up-> DBMS
 @enduml
