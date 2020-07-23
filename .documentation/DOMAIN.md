@@ -48,6 +48,10 @@
 
 
 
+
+
+
+
 ## User (Database)
 
 | Property   | Type         | About                                 | Note        |
@@ -60,9 +64,7 @@
 | lastName | String       | A possible last name of the user. | Optional |
 | details    | [Sring: Any] | A dictionary of details.              | Optional |
 
-
-
-#### Example JSON of Message
+##### Example JSON of User
 
 ```json
 {
