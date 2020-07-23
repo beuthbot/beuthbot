@@ -2,12 +2,17 @@
 
 
 
-## Message
+## Message (Gateway)
 
-| Name            | Type      | About | Required |
-| --------------- | --------- | ----- | ------------------ |
-| text | String | The actual text for the bot. |:white_check_mark:|
-| telegramId | Int | The telegram id of the user. |  |
+| Property     | Type                 | About                                     |
+| ------------ | -------------------- | ----------------------------------------- |
+| text         | `String`             | The actual text for the bot.              |
+| telegramId   | `Integer` (optional) | The telegram id of the user.              |
+| nickname     | `String` (optional)  | A possible nickname of the user.          |
+| firstName    | `String` (optional)  | A possible first name of the user.        |
+| lastName     | `String` (optional)  | A possible last name of the user.         |
+| clientDate   | `Timestamp` (option) | The current date of the client app / bot. |
+| clientSecret | `String` (optional)  | The client's api key.                     |
 
 ##### Example JSON of Message
 
@@ -20,14 +25,42 @@
 
 
 
-## User
+## Response (Gateway)
 
-| Property    | Type         | About                                 | Required           |
-| ----------- | ------------ | ------------------------------------- | ------------------ |
-| id          | Integer      | The database id of the BeuthBot user. | :white_check_mark: |
-| telegramId | Integer      | The telegram id of the user.          |                    |
-| nickname    | String       | Some nickname                         |                    |
-| details     | [Sring: Any] | A dictionary of details.              |                    |
+| Property       | Type                       | About                                                       |
+| -------------- | -------------------------- | ----------------------------------------------------------- |
+| text           | `String`                   | The actual text for the bot.                                |
+| answer.content | `String` (optional)        | The answer of the bot.                                      |
+| answer.history | `Array<String>` (optional) | A trace of the services the message passed till the answer. |
+
+##### Example JSON of Message
+
+```json
+{
+   "text": "Wie wird das Wetter morgen?",
+   "answer" : {
+      "content" : "Morgen gibt es Sonnenschein bei 29 Grad.",
+      "history" : ["gateway", "registry", "weather-microservice"]
+   },
+   ...
+}
+```
+
+
+
+## User (Database)
+
+| Property   | Type         | About                                 | Note        |
+| ---------- | ------------ | ------------------------------------- | ------------------ |
+| _id        | String      | The id given by MongoDB. |  |
+| id         | Integer      | The database id of the BeuthBot user. |  |
+| telegramId | Integer      | The telegram id of the user.          | Optional |
+| nickname   | String       | A possible nickname of the user. | Optional |
+| firstName | String       | A possible first name of the user. | Optional |
+| lastName | String       | A possible last name of the user. | Optional |
+| details    | [Sring: Any] | A dictionary of details.              | Optional |
+
+
 
 #### Example JSON of Message
 
@@ -36,9 +69,12 @@
    "id": 12345,
    "telegramId": 12345,
    "nickname": "Al",
+   "firstName": "Alan",
+   "lastName": "Touring",
    "details": {
       "home": "Bonn",
       "birthday": "23.06.1912",
+      "meal-preference" : "vegetarisch",
       ...
    }
 }
