@@ -4,7 +4,7 @@ services:
 
   gateway:
     build: gateway
-    restart: unless-stopped
+    restart: always
     depends_on:
       - deconcentrator
       - registry
@@ -24,7 +24,7 @@ services:
 
   deconcentrator:
     build: deconcentrator-js
-    restart: unless-stopped
+    restart: always
     depends_on:
       - rasa
     links:
@@ -39,7 +39,7 @@ services:
 
   rasa:
     image: rasa/rasa:1.6.0-spacy-de
-    restart: unless-stopped
+    restart: always
     depends_on:
       - duckling
     ports:
@@ -56,13 +56,13 @@ services:
 
   duckling:
     image: rasa/duckling:0.1.6.2
-    restart: unless-stopped
+    restart: always
     # networks:
     #   - beuthbot
 
   mongo:
     image: mongo:4.0.4
-    restart: unless-stopped
+    restart: always
     ports:
       - 27017:27017
     #      - 27018:27018
@@ -78,7 +78,7 @@ services:
 
   database:
     build: database
-    restart: unless-stopped
+    restart: always
     depends_on:
       - mongo
     links:
@@ -93,7 +93,7 @@ services:
 
   database_microservice:
     build: database_microservice
-    restart: unless-stopped
+    restart: always
     depends_on:
       - database
     links:
@@ -107,7 +107,7 @@ services:
 
   registry:
     build: registry
-    restart: unless-stopped
+    restart: always
     links:
       - mensa
       - weather
@@ -123,7 +123,7 @@ services:
 
   mensa:
     build: mensa_microservice
-    restart: unless-stopped
+    restart: always
     # networks:
     #   - beuthbot
     ports:
@@ -131,7 +131,7 @@ services:
 
   weather:
     build: weather_microservice
-    restart: unless-stopped
+    restart: always
     # networks:
     #   - beuthbot
     ports:

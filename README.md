@@ -54,6 +54,9 @@ $ cd beuthbot
 # edit environment file
 $ cp .env.sample .env && vim .env
 
+# create network
+docker network create beuthbot_network
+
 # start BeuthBot
 $ docker-compose up -d
 
