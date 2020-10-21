@@ -4,7 +4,7 @@ services:
 
   gateway:
     build: gateway
-    restart: unless-stopped
+    restart: always
     depends_on:
       - deconcentrator
       - registry
@@ -22,7 +22,7 @@ services:
 
   deconcentrator:
     build: deconcentrator-js
-    restart: unless-stopped
+    restart: always
     links:
       - rasa
     environment:
@@ -30,7 +30,7 @@ services:
 
   rasa:
     image: rasa/rasa:1.6.0-spacy-de
-    restart: unless-stopped
+    restart: always
     depends_on:
       - duckling
     volumes:
@@ -43,11 +43,11 @@ services:
 
   duckling:
     image: rasa/duckling:0.1.6.2
-    restart: unless-stopped
+    restart: always
 
   mongo:
     image: mongo:4.0.4
-    restart: unless-stopped
+    restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
@@ -57,7 +57,7 @@ services:
 
   database:
     build: database
-    restart: unless-stopped
+    restart: always
     links:
       - mongo
     environment:
@@ -66,7 +66,7 @@ services:
 
   database_microservice:
     build: database_microservice
-    restart: unless-stopped
+    restart: always
     links:
       - database
     environment:
@@ -74,7 +74,7 @@ services:
 
   registry:
     build: registry
-    restart: unless-stopped
+    restart: always
     links:
       - mensa
       - weather
@@ -86,11 +86,11 @@ services:
 
   mensa:
     build: mensa_microservice
-    restart: unless-stopped
+    restart: always
 
   weather:
     build: weather_microservice
-    restart: unless-stopped
+    restart: always
     environment:
       - WEATHER_API_KEY
 
