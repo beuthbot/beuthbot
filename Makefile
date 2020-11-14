@@ -53,7 +53,7 @@ release:
 	$(call check_defined, BHTBOTDIR, build directory)
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
-		make update; \
+		GITHUB_REF=$$GITHUB_REF make update; \
 		make deploy;
 
 test:
