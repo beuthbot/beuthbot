@@ -68,6 +68,8 @@ For development you may want to start the docker containers seperatly. There are
 
 ### Working with Submodules
 
+For easier access this repository uses [Makefile](./Makefile), so you might not need to handle submodules manually.
+
 ##### Pulling with submodules
 
 ```shell
@@ -76,6 +78,10 @@ git pull --recurse-submodules
 
 # pull all changes for the submodules
 git submodule update --remote
+```
+or
+```
+make update
 ```
 
 ##### Executing a command on every submodule
@@ -87,7 +93,10 @@ git submodule foreach 'git reset --hard'
 # including nested submodules
 git submodule foreach --recursive 'git reset --hard'
 ```
-
+or
+```
+make reset
+```
 ##### Known Issues
 
 When you are developing a submodule and want to push the updates you may get an error saying "HEAD detached at ...". If so, you need to checkout a brancht. Mostly the `master`.
@@ -100,27 +109,36 @@ Have a look on this [page](https://www.vogella.com/tutorials/GitSubmodules/artic
 
 ### Makefile
 
-Check out the `Makefile` of the repository it bundles some comon tasks for an convenience use with `make`. So for example to checkout the master branch of this repository and of all submodules simply type `make checkout-master` in the command line. Following lists the existing targets.
+Check out the [Makefile](./Makefile) of the repository it bundles some common tasks for an convenience use with `make`.
 
-``````shell
+This makefile is the **single source of truth** regarding operation of BHT-BOT. 
+So it's also part of the CI CD automation
+
+```
+$ make 
 targets:
+  up               Run docker-compose
+  test             Run tests
+  update           Checkout $DATE_TAG (from env, default master) and pull repository with submodules
+  upgrade          Checkout every submodules current master branch
+  release          Executed (by CI/CD Pipeline) for rolling out a release-tag
+  reset            !DANGER! Will delete all unsaved changes in repo and submodules
+```
 
-  pull             git pull --recurse-submodules
-  reset            git reset HEAD --hard
-                   git submodule foreach --recursive 'git reset --hard'
-  update           pull
-                   git submodules init
-                   git submodules update
-                   checkout-master
-  checkout-master  git checkout master
-                   git submodule foreach --recursive 'git checkout master'
-                   git submodule foreach --recursive 'git pull'
-  up               docker-compose up --build --detach
-  deploy           docker-compose -f docker-compose.production.yml down
-                   docker-compose -f docker-compose.production.yml up --build --detach
-``````
+### Releases & CI / CD
 
+BHT-Bot is automatically released to production server by executing the related [deployment-workflow](./.github/workflows/deploy.yml)
 
+Only commits with named-tags with version-number will be deployed. Example for a v3 release could look like:
+```
+git commit -m 'Collected v3 features'
+git tag v3.0.0
+git push --tags
+```
+
+Deployment will execute 3 stages: Build, Test and Deploy. The Test and Deploy stages will be called from [Makefile](./Makefile) test and deploy commands. 
+
+The Deployment process is handled by a self-hosted runner. For Contributers check [Selfhosted Runner Documentation](./.documentation/github-runner.md)
 
 ## Project Structure / Components
 

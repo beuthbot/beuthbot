@@ -1,0 +1,36 @@
+# Deployment workflow for Continuous Integration into Production
+
+name: CI
+
+# We only allow releases to be deployed - releases are marked with version number tags like v0.0.1
+on:
+  push:
+    tags:
+      - v*
+  pull_request:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    steps:
+      - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE
+
+  test:
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    needs: [ build ] # running tests with files from build
+    steps:
+    - name: Execute tests # Execute make deploy. The command relies on env variables being set by the runner
+      run: |
+        echo Running make test
+        make test
+
+  deploy:
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    needs: [ test ] # only deploy if tests succeeded
+    steps:
+    - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
+      run: |
+        echo Running make release
+        make release
