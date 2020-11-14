@@ -1,9 +1,8 @@
-# This is a basic workflow to help you get started with Actions
+# Deployment workflow for Continuous Integration into Production
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# We only allow releases to be deployed - releases are marked with version number tags like v0.0.1
 on:
   push:
     tags:
@@ -12,20 +11,16 @@ on:
     tags:
       - v*
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: [ self-hosted ]
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE
 
-      # Execute make deploy. The command relies on .env variables being set by the runner
-      - name: Deploy release
-        run: |
-          echo Running make deploy
-          make deploy
+  deploy:
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    steps:
+    - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
+      run: |
+        echo Running make deploy
+        make deploy
