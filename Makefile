@@ -59,10 +59,11 @@ release:
 test:
 	echo "No tests specified yet"
 
+upgrade:
+	#git submodule foreach --recursive 'git checkout master'
+	#git submodule foreach --recursive 'git pull origin master'
+
 update:
-	git pull --recurse-submodules
-	git submodule init
-	git submodule update
+	git fetch
 	git checkout $(UPDATE_TAG)
-	git submodule foreach --recursive 'git checkout master'
-	git submodule foreach --recursive 'git pull origin master'
+	git pull --recurse-submodules
