@@ -6,9 +6,11 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ dev_actions ] #todo change to master
+    tags:
+      - v*
   pull_request:
-    branches: [ dev_actions ] #todo change to master
+    tags:
+      - v*
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,7 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Execute make deploy. The command relies on .env variables being set by the runner
       - name: Deploy release
         run: |
           echo Running make deploy
