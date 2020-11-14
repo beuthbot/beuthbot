@@ -1,3 +1,14 @@
+# GITHUB_REF is provided by github runner. we use it to know which tag (or branch) is addressed
+GITHUB_REF ?= master
+UPDATE_TAG = $(GITHUB_REF)
+
+# Command for checking if variable exists + exit if doesnt
+check_defined = \
+	$(strip $(foreach 1,$1, \
+		$(call __check_defined,$1,$(strip $(value 2)))))
+__check_defined = \
+	$(if $(value $1),, \
+	  $(error Undefined $1$(if $2, ($2))))
 
 commands: $(eval .SILENT:)
 	echo "targets:" && echo ""
@@ -15,14 +26,6 @@ commands: $(eval .SILENT:)
 	echo "  deploy           docker-compose -f docker-compose.production.yml down"
 	echo "                   docker-compose -f docker-compose.production.yml up --build --detach"
 	echo ""
-
-# Command for checking if variable exists + exit if doesnt
-check_defined = \
-	$(strip $(foreach 1,$1, \
-		$(call __check_defined,$1,$(strip $(value 2)))))
-__check_defined = \
-	$(if $(value $1),, \
-	  $(error Undefined $1$(if $2, ($2))))
 
 pull:
 	git pull --recurse-submodules
@@ -60,6 +63,6 @@ update:
 	git pull --recurse-submodules
 	git submodule init
 	git submodule update
-	git checkout master
+	git checkout $(UPDATE_TAG)
 	git submodule foreach --recursive 'git checkout master'
 	git submodule foreach --recursive 'git pull'
