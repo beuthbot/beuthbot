@@ -48,6 +48,9 @@ deploy:
 	  docker-compose -f docker-compose.production.yml down; \
 	  docker-compose -f docker-compose.production.yml up --build --detach
 
+test:
+	echo "No tests specified yet"
+
 update:
 	git pull --recurse-submodules
 	git submodule init

@@ -17,8 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE
 
+  test:
+    runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    needs: [ build ] # running tests with files from build
+    steps:
+    - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
+        run: |
+          echo Running make deploy
+          make test
+
   deploy:
     runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
+    needs: [ test ] # only deploy if tests succeeded
     steps:
     - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
       run: |
