@@ -14,8 +14,8 @@
 - [Overview of Docker containers](#Overview-of-Docker-containers)
 - [Domain](#Domain)
 - [Technologies](#Technologies)
-- [Motivation](#Motivation)
 - [BeuthBot Clients](#BeuthBot-Clients)
+- [CI/CD](#releases--ci--cd)
 - [Authors](#Authors)
 
 ## Requirements
