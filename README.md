@@ -125,21 +125,6 @@ targets:
   reset            !DANGER! Will delete all unsaved changes in repo and submodules
 ```
 
-### Releases & CI / CD
-
-BHT-Bot is automatically released to production server by executing the related [deployment-workflow](./.github/workflows/deploy.yml)
-
-Only commits with named-tags with version-number will be deployed. Example for a v3 release could look like:
-```
-git commit -m 'Collected v3 features'
-git tag v3.0.0
-git push --tags
-```
-
-Deployment will execute 3 stages: Build, Test and Deploy. The Test and Deploy stages will be called from [Makefile](./Makefile) test and deploy commands. 
-
-The Deployment process is handled by a self-hosted runner. For Contributers check [Selfhosted Runner Documentation](./.documentation/github-runner.md)
-
 ## Project Structure / Components
 
 #### Submodules
@@ -274,7 +259,23 @@ $ docker ps
 $ docker exec -it <Container-ID> bash
 ```
 
-## Versioning
+## Releases & CI / CD
+
+### Continuous Integration & Delivery
+BHT-Bot is automatically released to production server by executing the related [deployment-workflow](./.github/workflows/deploy.yml)
+
+Only commits with named-tags with version-number will be deployed. Example for a v3 release could look like:
+```
+git commit -m 'Collected v3 features'
+git tag v3.0.0
+git push --tags
+```
+
+Deployment will execute 3 stages: Build, Test and Deploy. The Test and Deploy stages will be called from [Makefile](./Makefile) test and deploy commands. 
+
+The Deployment process is handled by a self-hosted runner. For Contributers check [Selfhosted Runner Documentation](./.documentation/github-runner.md)
+
+### Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available see [tags on this repository](https://github.com/beuthbot/beuthbot/releases)
 
