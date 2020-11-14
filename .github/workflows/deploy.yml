@@ -24,7 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: ls /usr/local/share/beuthbot/beuthbot/
+        run: echo "Env var $BHTBOTDIR"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
