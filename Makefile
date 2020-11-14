@@ -41,12 +41,17 @@ up:
 	docker-compose up --build --detach
 
 deploy:
+	if ! test -f .env ; then echo "No .env file found." ; fi
+	docker-compose -f docker-compose.production.yml down
+	docker-compose -f docker-compose.production.yml up --build --detach
+
+# Todo: would be great to have a more sophisticated release process where update is not called at production level
+release:
 	$(call check_defined, BHTBOTDIR, build directory)
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
-	  if ! test -f .env ; then echo "No .env file found."; exit 1 ; fi; \
-	  docker-compose -f docker-compose.production.yml down; \
-	  docker-compose -f docker-compose.production.yml up --build --detach
+		make update; \
+		make deploy;
 
 test:
 	echo "No tests specified yet"

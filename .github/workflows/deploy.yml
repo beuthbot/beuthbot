@@ -32,5 +32,5 @@ jobs:
     steps:
     - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
       run: |
-        echo Running make deploy
-        make deploy
+        echo Running make release
+        make release
