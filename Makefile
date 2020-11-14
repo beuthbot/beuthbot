@@ -64,6 +64,7 @@ upgrade:
 	#git submodule foreach --recursive 'git pull origin master'
 
 update:
+	echo "executing update for $(UPDATE_TAG)"
 	git fetch
 	git checkout $(UPDATE_TAG)
 	git pull --recurse-submodules
