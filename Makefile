@@ -65,6 +65,6 @@ upgrade:
 
 update:
 	echo "executing update for $(UPDATE_TAG)"
-	git fetch
+	git pull --tags
 	git checkout $(UPDATE_TAG)
 	git pull --recurse-submodules
