@@ -23,7 +23,7 @@ jobs:
     steps:
     - name: Execute tests # Execute make deploy. The command relies on env variables being set by the runner
       run: |
-        echo Running make deploy
+        echo Running make test
         make test
 
   deploy:
