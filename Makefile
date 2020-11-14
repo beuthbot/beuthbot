@@ -65,4 +65,4 @@ update:
 	git submodule update
 	git checkout $(UPDATE_TAG)
 	git submodule foreach --recursive 'git checkout master'
-	git submodule foreach --recursive 'git pull'
+	git submodule foreach --recursive 'git pull origin master'
