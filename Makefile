@@ -44,7 +44,7 @@ test:
 	echo "No tests specified yet :("
 
 upgrade:
-	git submodule update --recursive --remote
+	git submodule update --recursive --remote --merge
 	git submodule foreach --recursive 'git checkout master'
 	git submodule foreach --recursive 'git pull origin master'
 
