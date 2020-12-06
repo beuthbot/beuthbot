@@ -36,8 +36,7 @@ const queryCat = async ()=>{
 
 /* Listen on endpoint /cat */
 app.endpoint('cat', async (req, answ)=>{
-    answ.setContent((await queryCat()).url);
-    return answ;
+    return answ.setContent((await queryCat()).url).setCacheable(false);
 })
 
 /* Start server */
