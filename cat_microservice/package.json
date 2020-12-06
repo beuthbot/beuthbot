@@ -1,0 +1,20 @@
+{
+  "name": "@bhtbot/cat_service",
+  "version": "1.0.0",
+  "description": "Bring the Cat",
+  "main": "src/index.js",
+  "author": "Dennis Walz",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@bhtbot/bhtbotservice": "0.0.5",
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0"
+  }
+}
