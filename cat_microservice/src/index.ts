@@ -36,7 +36,7 @@ const queryCat = async ()=>{
 
 /* Listen on endpoint /cat */
 app.endpoint('cat', async (req, answ)=>{
-    answ.message = (await queryCat()).url;
+    answ.setContent((await queryCat()).url);
     return answ;
 })
 
