@@ -118,6 +118,7 @@ services:
       - MENSA_ENDPOINT=http://mensa:8000/meals
       - WETTER_ENDPOINT=http://weather:7000/weather
       - DATABASE_ENDPOINT=http://database_microservice:27016/database
+      - CATS_ENDPOINT=http://cats:7001/cat
     # networks:
     #   - beuthbot
 
@@ -138,6 +139,15 @@ services:
       - 9951:7000
     environment:
       - WEATHER_API_KEY
+
+  cats:
+    build: cat_microservice
+    restart: always
+    ports:
+      - 7001:7001
+    environment:
+      - CATS_APIKEY
+      - CATS_PORT
 
 networks:
   # beuthbot: {}
