@@ -1,0 +1,22 @@
+.github {
+  text-align: right;
+  margin-top: 260px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.intro {
+  font-size: 20px;
+}
+
+.btn-secondary {
+  background-color: #7fd9df;
+  border-color: #7fd9df;
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  color: #7fd9df;
+}

@@ -1,0 +1,21 @@
+.wiki {
+  margin-top: 260px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.intro {
+  font-size: 20px;
+}
+
+.btn-primary {
+  background-color: #32c1cb;
+  border-color: #32c1cb;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #32c1cb;
+}
