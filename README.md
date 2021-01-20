@@ -137,7 +137,7 @@ targets:
 | [registry](https://github.com/beuthbot/registry) | The registry of services. It knows all existing services and handles the requests against these services. | JS |
 | [mensa](https://github.com/beuthbot/mensa) | The mensa service of the BeuthBot. It knows whether the Mensa is open or closed. | JS |
 | [weather](https://github.com/beuthbot/weather) | The weather service. | JS |
-| [stt](https://github.com/beuthbot/stt_microservice) | The Speech To Text service. | JS |
+| [stt](https://github.com/beuthbot/stt_microservice) | The Speech To Text service based on Mozilla DeepSpeech. | JS |
 
 #### Other Packages
 
