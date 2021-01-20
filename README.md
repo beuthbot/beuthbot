@@ -137,6 +137,7 @@ targets:
 | [registry](https://github.com/beuthbot/registry) | The registry of services. It knows all existing services and handles the requests against these services. | JS |
 | [mensa](https://github.com/beuthbot/mensa) | The mensa service of the BeuthBot. It knows whether the Mensa is open or closed. | JS |
 | [weather](https://github.com/beuthbot/weather) | The weather service. | JS |
+| [stt](https://github.com/beuthbot/stt_microservice) | The Speech To Text service. | JS |
 
 #### Other Packages
 
@@ -163,6 +164,7 @@ targets:
 | [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |node|
 | [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |node:11-alpine|
 | [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |node:11-alpine|
+| [stt](https://github.com/beuthbot/stt_microservice) | 70002 | 70002 |node:11-alpine|
 
 ## Domain
 
