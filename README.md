@@ -164,7 +164,7 @@ targets:
 | [registry](https://github.com/beuthbot/registry) | 3000 | 9922 |node|
 | [mensa](https://github.com/beuthbot/mensa) | 8000 | 9950 |node:11-alpine|
 | [weather](https://github.com/beuthbot/weather) | 7000 | 9951 |node:11-alpine|
-| [stt](https://github.com/beuthbot/stt_microservice) | 70002 | 70002 |node:11-alpine|
+| [stt](https://github.com/beuthbot/stt_microservice) | 7002 | 7002 |node:11-alpine|
 
 ## Domain
 
