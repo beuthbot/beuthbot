@@ -43,10 +43,10 @@ services:
     ports:
       - 7002:7002
     environment:
-      - PORT=7002
+      - STT_PORT=7002
 
   rasa:
-    image: rasa/rasa:1.6.0-spacy-de
+    image: rasa/rasa:2.1.3-spacy-de
     restart: always
     depends_on:
       - duckling
@@ -59,7 +59,7 @@ services:
       - "*"
 
   duckling:
-    image: rasa/duckling:0.1.6.2
+    image: rasa/duckling:0.1.6.5
     restart: always
 
   mongo:
