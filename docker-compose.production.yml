@@ -19,7 +19,7 @@ services:
       - DECONCENTRATOR_ENDPOINT=http://deconcentrator:8338/message
       - REGISTRY_ENDPOINT=http://registry:3000/get-response
       - DATABASE_ENDPOINT=http://database:3000/users/find
-      - USERMESSENGER_TOKEN=some_safe_token
+      - USERMESSENGER_TOKEN
 
   deconcentrator:
     build: deconcentrator-js
