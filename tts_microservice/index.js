@@ -9,7 +9,7 @@ config.port = process.env.PORT ? Number(process.env.PORT) : 3003;
 const app = new Service('ttsService', config);
 
 /* Listen on endpoint /tts_microservice */
-app.endpoint('tts_microservice', async (req, answ) => {
+app.endpoint('tts', async (req, answ) => {
 
     let text = req.content// content from STT
     let lang = 'de'
