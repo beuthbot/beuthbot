@@ -25,3 +25,6 @@
 [submodule "stt_microservice"]
 	path = stt_microservice
 	url = https://github.com/beuthbot/stt_microservice
+[submodule "reminder"]
+	path = reminder_microservice
+	url = https://github.com/beuthbot/reminder_microservice.git
