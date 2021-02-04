@@ -46,6 +46,37 @@ services:
     environment:
       - STT_PORT=7002
 
+  tts:
+    build: tts_microservice
+    restart: always
+    ports:
+      - 7003:7003
+    environment:
+      - TTS_PORT=7003
+
+  reminder:
+    build: reminder_microservice
+    restart: always
+    ports:
+      - "${REMINDER_PORT:-7004}:3000"
+    environment:
+      - REMINDER_PORT
+      - REMINDER_DATABASE_ADDRESS
+      - REMINDER_DATABASE_PASSWORD
+      - REMINDER_DATABASE_USER
+      - USERMESSENGER_TOKEN
+      - USERMESSENGER_ENDPOINT
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${REMINDER_DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${REMINDER_DATABASE_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+
   rasa:
     image: rasa/rasa:2.1.3-spacy-de
     restart: always
@@ -102,6 +133,7 @@ services:
       - WETTER_ENDPOINT=http://weather:7000/weather
       - DATABASE_ENDPOINT=http://database_microservice:27016/database
       - CATS_ENDPOINT=http://cats:7001/cat
+      - REMINDER_ENDPOINT
 
   mensa:
     build: mensa_microservice
@@ -117,3 +149,6 @@ networks:
   default:
     external:
       name: beuthbot_network
+
+volumes:
+  postgres:
