@@ -1,0 +1,21 @@
+.bg-light {
+  background-color: #19a5a5 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  padding-right: 15px;
+}
+
+/* a:active {
+  text-decoration: underline;
+} */
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  padding-right: 4px;
+  margin-top: -2px;
+}

@@ -37,8 +37,8 @@ release:
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
 		GITHUB_REF=$(GITHUB_REF) make update; \
-		docker-compose -f docker-compose.production.yml down; \
-        docker-compose -f docker-compose.production.yml up --build --detach; \
+		docker-compose -f docker-compose.yml down; \
+        docker-compose -f docker-compose.yml up --build --detach; \
 
 test:
 	echo "No tests specified yet :("
