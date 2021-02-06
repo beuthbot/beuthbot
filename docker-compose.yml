@@ -66,6 +66,7 @@ services:
       - REMINDER_DATABASE_USER
       - USERMESSENGER_TOKEN
       - USERMESSENGER_ENDPOINT
+      - DATABASE_USER_ENDPOINT
 
   postgres:
     image: postgres
@@ -109,6 +110,8 @@ services:
     restart: always
     links:
       - mongo
+    ports:
+      - 7005:3000
     environment:
       - MONGO_DB_ENDPOINT=mongodb://mongo:27017/users
       - MONGO_URI=mongodb://mongo:27017
