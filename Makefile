@@ -63,4 +63,4 @@ update:
 	git checkout $(UPDATE_TAG)
 
 	# bring submodules to checked out version
-	git pull --recurse-submodules
+	git pull --recurse-submodules origin master
