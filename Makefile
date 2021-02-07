@@ -1,6 +1,6 @@
-# GITHUB_REF is provided by github runner. we use it to know which tag (or branch) is addressed
-GITHUB_REF ?= master
-UPDATE_TAG = $(GITHUB_REF)
+# GIT_TAG_NAME is provided by github action. we use it to know which tag (or branch) is addressed
+GIT_TAG_NAME ?= master
+UPDATE_TAG = $(GIT_TAG_NAME)
 
 # Command for checking if variable exists + exit if doesnt
 check_defined = \
@@ -36,7 +36,7 @@ release:
 	$(call check_defined, BHTBOTDIR, build directory)
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
-		GITHUB_REF=$(GITHUB_REF) make update; \
+		GIT_TAG_NAME=$(GIT_TAG_NAME) make update; \
 		docker-compose -f docker-compose.yml down; \
         docker-compose -f docker-compose.yml up --build --detach; \
 
