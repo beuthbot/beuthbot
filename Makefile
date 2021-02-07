@@ -36,8 +36,8 @@ release:
 	$(call check_defined, BHTBOTDIR, build directory)
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
-		GIT_TAG_NAME=$(GIT_TAG_NAME) make update; \
-		docker-compose -f docker-compose.yml down; \
+		GIT_TAG_NAME=$(GIT_TAG_NAME) make update && \
+		docker-compose -f docker-compose.yml down && \
         docker-compose -f docker-compose.yml up --build --detach; \
 
 test:
