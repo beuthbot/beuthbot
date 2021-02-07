@@ -50,8 +50,17 @@ upgrade:
 
 update:
 	echo "executing update for $(UPDATE_TAG)"
-	git checkout $(UPDATE_TAG)
+
+	# back to master, so we get the new tag for checkout
+	git checkout master
 	git pull --tags
+
+	# do the same for submodules
 	git submodule foreach --recursive 'git checkout master'
 	git submodule foreach --recursive 'git pull origin master'
+
+    # checkout the pulled and released tag
+	git checkout $(UPDATE_TAG)
+
+	# bring submodules to checked out version
 	git pull --recurse-submodules
