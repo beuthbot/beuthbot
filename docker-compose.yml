@@ -67,6 +67,7 @@ services:
       - USERMESSENGER_TOKEN
       - USERMESSENGER_ENDPOINT
       - DATABASE_USER_ENDPOINT
+      - REMINDER_CLEAR_OLDER_THAN_DAYS=14
 
   postgres:
     image: postgres
