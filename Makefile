@@ -50,8 +50,8 @@ upgrade:
 
 update:
 	echo "executing update for $(UPDATE_TAG)"
-	git checkout master
-	git submodule foreach --recursive 'git pull origin master'
-	git pull --tags
 	git checkout $(UPDATE_TAG)
+	git pull --tags
+	git submodule foreach --recursive 'git checkout master'
+	git submodule foreach --recursive 'git pull origin master'
 	git pull --recurse-submodules
