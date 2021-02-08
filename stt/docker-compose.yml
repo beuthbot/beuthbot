@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  stt_microservice:
+    build: .
+    restart: always
+    ports:
+      - 7002:7002
+    environment:
+      - STT_PORT=7002
+
+networks:
+  default:
+    external:
+      name: beuthbot_network
