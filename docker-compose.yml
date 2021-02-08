@@ -53,7 +53,15 @@ services:
       - 7003:7003
     environment:
       - TTS_PORT=7003
-
+      
+  scraper:
+    build: scraper_microservice
+    restart: always
+    ports:
+      - 9953:7007
+    environment:
+      - SCRAPER_PORT=7007
+      
   reminder:
     build: reminder_microservice
     restart: always
