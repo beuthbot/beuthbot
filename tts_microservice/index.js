@@ -10,7 +10,7 @@ const app = new Service('ttsService', config);
 /* Listen on endpoint /tts_microservice */
 app.endpoint('tts', async (req, answ) => {
 
-    let text = req.registryAnswer.answer.content// content from STT
+    let text = req.registryAnswer.answer.content
     let lang = 'de'
     let name = "tts_test"
     let format = "ogg"
