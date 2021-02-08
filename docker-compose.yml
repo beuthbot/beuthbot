@@ -146,6 +146,7 @@ services:
       - DATABASE_ENDPOINT=http://database_microservice:27016/database
       - CATS_ENDPOINT=http://cats:7001/cat
       - REMINDER_ENDPOINT
+      - SCRAPER_ENDPOINT
 
   mensa:
     build: mensa_microservice
