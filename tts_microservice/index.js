@@ -1,22 +1,20 @@
 const ttsService = require('./services/ttsService');
-const ttsRouter = require('./services/tts');
 
 const {Service, AppConfig, FileAnswer} = require('@bhtbot/bhtbotservice');
 
 /* Init Service */
 const config = new AppConfig();
-config.port = process.env.PORT ? Number(process.env.PORT) : 3003;
+config.port = process.env.PORT ? Number(process.env.PORT) : 7003;
 const app = new Service('ttsService', config);
 
 /* Listen on endpoint /tts_microservice */
 app.endpoint('tts', async (req, answ) => {
 
-    let text = req.content// content from STT
+    let text = req.registryAnswer.answer.content// content from STT
     let lang = 'de'
     let name = "tts_test"
     let format = "ogg"
-    let path = name + "."+ format
-
+    let path =  name + "."+ format
     const filePath = await new Promise((resolve, reject) => {
         ttsService.convertTextToSpeech(text,name,format,lang,function (err, result) {
             if(err){ reject(error) }

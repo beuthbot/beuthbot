@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  scraper:
+    build: .
+    restart: always
+    ports:
+      - 9953:7007
+    environment:
+      - SCRAPER_PORT
+

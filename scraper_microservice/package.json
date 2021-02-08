@@ -1,7 +1,7 @@
 {
-  "name": "tts_microservice",
+  "name": "scraper_microservice",
   "version": "0.0.1",
-  "description": "a microservice for text to speech",
+  "description": "a microservice for scraping tasks",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,11 +10,9 @@
   "author": "Alexis Popovski",
   "dependencies": {
     "@bhtbot/bhtbotservice": "^0.0.16",
-    "axios": "^0.19.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "gtts": "^0.2.1",
-    "node-cache": "^5.1.0"
+    "request": "^2.88.2",
+    "table-scraper": "^1.0.3",
+    "x-ray": "^2.3.4"
   }
 }

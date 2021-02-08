@@ -1,6 +1,6 @@
-# GITHUB_REF is provided by github runner. we use it to know which tag (or branch) is addressed
-GITHUB_REF ?= master
-UPDATE_TAG = $(GITHUB_REF)
+# GIT_TAG_NAME is provided by github action. we use it to know which tag (or branch) is addressed
+GIT_TAG_NAME ?= master
+UPDATE_TAG = $(GIT_TAG_NAME)
 
 # Command for checking if variable exists + exit if doesnt
 check_defined = \
@@ -36,8 +36,8 @@ release:
 	$(call check_defined, BHTBOTDIR, build directory)
 	echo "Trigger release in directory: $$BHTBOTDIR"
 	cd $$BHTBOTDIR; \
-		GITHUB_REF=$(GITHUB_REF) make update; \
-		docker-compose -f docker-compose.yml down; \
+		GIT_TAG_NAME=$(GIT_TAG_NAME) make update && \
+		docker-compose -f docker-compose.yml down && \
         docker-compose -f docker-compose.yml up --build --detach; \
 
 test:
@@ -50,8 +50,17 @@ upgrade:
 
 update:
 	echo "executing update for $(UPDATE_TAG)"
+
+	# back to master, so we get the new tag for checkout
 	git checkout master
-	git submodule foreach --recursive 'git pull origin master'
 	git pull --tags
+
+	# do the same for submodules
+	git submodule foreach --recursive 'git checkout master'
+	git submodule foreach --recursive 'git pull origin master'
+
+    # checkout the pulled and released tag
 	git checkout $(UPDATE_TAG)
-	git pull --recurse-submodules
+
+	# bring submodules to checked out version
+	git pull --recurse-submodules origin master

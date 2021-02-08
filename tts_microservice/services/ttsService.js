@@ -1,7 +1,4 @@
 const gTTS  = require("gtts");
-// textToSpeak = "Willkommen beim Beut Bott! Hier erhalten Sie Informationen ueber blablabla"
-//saytext = say.speak(textToSpeak)
-// Export spoken audio to a WAV / MP3 file
 
 /**
  *

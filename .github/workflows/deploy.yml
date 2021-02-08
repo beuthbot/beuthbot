@@ -30,6 +30,8 @@ jobs:
     runs-on: [ self-hosted ] # only runs on self-hosted runner that sits inside production VM
     needs: [ test ] # only deploy if tests succeeded
     steps:
+    - uses: olegtarasov/get-tag@v2.1
+      id: tagName
     - name: Deploy release # Execute make deploy. The command relies on env variables being set by the runner
       run: |
         echo Running make release
