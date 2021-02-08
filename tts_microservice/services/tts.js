@@ -1,4 +1,4 @@
-const say = require("say");
+const gTTS  = require("gtts");
 // textToSpeak = "Willkommen beim Beut Bott! Hier erhalten Sie Informationen ueber blablabla"
 //saytext = say.speak(textToSpeak)
 // Export spoken audio to a WAV / MP3 file
@@ -7,28 +7,19 @@ const say = require("say");
  *
  * @param textToSpeak - String text, that shall be converted to audioFile
  * @param fileName    - String name of the file
- * @param format      - String 'mp3' or 'wav'
+ * @param format      - String 'mp3' / 'wav' / 'ogg'
  */
-async function convertTextToSpeech(textToSpeak,fileName,format,callback){
+ async function convertTextToSpeech(textToSpeak,fileName,format,language,callback){
 
-    // say.export(textToSpeak, say.getInstalledVoices(), 1, fileName + "." + format, (err) => {
-    //     if (err) {
-    //         return console.error(err)
-    //     }
-    //     console.log('Text has been saved to ' + fileName + "." + format)
-    // })
-    await textToSpeak
-    say.export(textToSpeak, say.getInstalledVoices(), 1, fileName + "." + format)
-    return fileName+"."+format
-}
- function convertTTS(textToSpeak,callback){
+    let gtts = new gTTS(textToSpeak, language);
+    let path = fileName +"."+ format
 
-    // say.export(textToSpeak, say.getInstalledVoices(), 1, fileName + "." + format, (err) => {
-    //     if (err) {
-    //         return console.error(err)
-    //     }
-    //     console.log('Text has been saved to ' + fileName + "." + format)
-    // })
-    return say.speak(textToSpeak, say.getInstalledVoices(), 1,callback)
+    gtts.save(path, callback)
 }
-module.exports = {convertTextToSpeech,convertTTS};
+
+function convertTextToSpeechStream(textToSpeak,language,res){
+    let gtts = new gTTS(textToSpeak, language);
+    gtts.stream().pipe(res);
+}
+
+module.exports = {gTTS,convertTextToSpeech,convertTextToSpeechStream};
