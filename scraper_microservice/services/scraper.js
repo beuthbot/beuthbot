@@ -4,6 +4,7 @@ const imgUrl = 'https://medium.com/@stefanhyltoft/scraping-html-tables-with-node
 const terminUrl = "https://www.beuth-hochschule.de/termine"
 //const universalScraper = require('../../universalScraper/universalScraper'); // cannot be found in docker
 const universalScraper = require('./universalScraper');
+const utils = require('./utils');
 const fs = require('fs');
 
 // Termine
@@ -107,7 +108,7 @@ async function getProfessors(){
     return  universalScraper.allTablesToObject("https://www.beuth-hochschule.de/people",'allProfs')
 }
 
-function prof(name){
+function getProfFromJSON(name){
     updateProfessors();
     // let index = name.toLowerCase().charCodeAt(0) - 96
     let rawdata = fs.readFileSync('allProfs.json');
@@ -119,7 +120,7 @@ function prof(name){
 
     let searchedProf = allProfs[index].find(e => e.Name.startsWith(name))
 
-    return searchedProf
+    return utils.concatObjectsKeyValue(searchedProf)
 }
 
 async function getProf(name){
@@ -131,7 +132,7 @@ async function getProf(name){
             let index = allProfs.findIndex(e => e[0].Name[0] == startingLetter);
             let searchedProf = allProfs[index].find(e => e.Name.startsWith(name))
 
-            return searchedProf
+            return utils.concatObjectsKeyValue(searchedProf)
         })
     }
     catch(e){
@@ -142,4 +143,4 @@ async function getProf(name){
 // updateProfessors()
 //getProf("ziemer")
 
-module.exports = {bewerbungsFristenBachelor,bewerbungsFristenMaster,belegFrist,vorlesungsZeiten,beurlaubungFrist,updateProfessors,prof,getProf}
+module.exports = {bewerbungsFristenBachelor,bewerbungsFristenMaster,belegFrist,vorlesungsZeiten,beurlaubungFrist,updateProfessors,getProfFromJSON,getProf}
