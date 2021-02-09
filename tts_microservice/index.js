@@ -23,7 +23,6 @@ app.endpoint('tts', async (req, answ) => {
     })
 
     return FileAnswer.fromPath(filePath)
-
 })
 
 app.start();
