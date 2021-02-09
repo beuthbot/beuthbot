@@ -147,7 +147,6 @@ services:
       - CATS_ENDPOINT=http://cats:7001/cat
       - SCRAPER_ENDPOINT=http://scraper:7007/scraper
       - REMINDER_ENDPOINT
-      -
 
 
   mensa:
