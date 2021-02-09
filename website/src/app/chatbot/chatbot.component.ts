@@ -1,42 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import {Gateway, BotRequest} from '@bhtbot/bhtbot';
-import {config as dotenvConig} from 'dotenv';
-
-// use `dotenv` to ready `.env` file even when not running with docker-compose
-dotenvConig();
+import { environment } from './../../environments/environment.dev';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Gateway, BotRequest } from '@bhtbot/bhtbot';
 
 @Component({
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, AfterViewInit {
 
-  reply = '';
-  message;
+  @ViewChildren('lastMessage') lastMessage: QueryList<ElementRef>;
 
-  gateway = new Gateway(process.env.GATEWAY_ENDPOINT, 'website');
+  reply;
+
+  gateway = new Gateway(environment.gateway_endpoint, 'website');
+
+  message: BotRequest;
+
+  createdTimestamp = new Date().getTime();
+  cleanMessage;
+
+  chatBots = [];
 
   constructor() { }
 
-  ngOnInit() {
-
-    this.message = new BotRequest({
-      text: 'Hello World',
-      serviceUserId: 1,
-      clientDate: new Date().getTime(),
-      clientLanguage: 'de',
-      firstName: 'test',
+  ngAfterViewInit() {
+    this.lastMessage.changes.subscribe(() => {
+      if (this.lastMessage && this.lastMessage.last) {
+        this.lastMessage.last.nativeElement.focus();
+      }
     });
+  }
 
-    this.gateway.query(this.message).then(botResponse => {
+  ngOnInit() {
+  }
+
+  messageRequest() {
+    this.message = new BotRequest({
+        text: this.cleanMessage,
+        clientDate: this.createdTimestamp,
+        clientLanguage: 'de'
+    });
+    return this.message;
+  }
+
+  chatbotReply(messageRequest) {
+    messageRequest = this.messageRequest();
+    this.gateway.query(messageRequest).then(botResponse => {
       console.log('bot responded', botResponse);
       if (botResponse && botResponse.answer && botResponse.answer.content) {
           const responseMessage = botResponse.answer.content;
           this.reply = responseMessage;
+      /* } else {
+      if (botResponse && botResponse.answer && botResponse.answer.error) {
+          this.reply = botResponse.answer.error; */
       } else {
-        this.reply = 'ERROR cant connect to bot gateway';
+        this.reply = 'Unknown Error, probably cant connect to bot gateway';
       }
+      // }
+      this.chatBots.push({
+        message: this.cleanMessage,
+        reply: this.reply
+      });
     });
   }
 

@@ -1,0 +1,134 @@
+.chatbot {
+    margin-bottom: 4.5rem;
+    padding-top: 4.5rem;
+}
+
+.lastMessage {
+    outline: none;
+}
+
+.message-container {
+    position: fixed; 
+    bottom: 0;
+    width:100%;
+    background-color: #19a5a5;
+}
+
+.mb-3, .my-3 {
+    margin-top: 0.5rem!important;
+    margin-bottom: 0.5rem!important;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    margin-top: 0.8rem;
+    margin-right: 1rem;
+}
+
+.btn-send {
+    color: #fff;
+    background-color: lightgray;
+    border-color: lightgray;
+}
+
+.send-icon {
+    padding-right: 2px;
+    margin-top: -2px;
+}
+
+.box3 {
+    width: 400px;
+    /* margin: 50px auto; */
+    border-radius: 15px;
+    border: 4px solid #00bfb6;
+    background: transparent;
+    color: #00bfb6;
+    padding: 18px;
+    text-align: center;
+    font-weight: 900;
+    font-family: arial;
+    position: relative;
+    display:table-cell;
+    float: right;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: inherit;
+}
+
+
+.box4 {
+    width: 400px;
+    margin: 50px auto;
+    border-radius: 15px;
+    background: #00bfb6;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    font-family: arial;
+    position: relative;
+    display:table-cell;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: inherit;
+}
+
+.sb13:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #00bfb6;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    right: -21px;
+    top: 6px;
+}  
+
+.sb13:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 7px solid #fff;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #fff;
+    border-bottom: 7px solid transparent;
+    right: -11px;
+    top: 10px;
+} 
+
+.sb14:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid #00bfb6;
+    border-top: 15px solid #00bfb6;
+    border-bottom: 15px solid transparent;
+    left: -16px;
+    top: 10px;
+}
+
+.input-group {
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+}
+
+.cat {
+    max-width: 360px;
+    max-height: 450px;
+}
+
+.features_table {
+    color: white;
+    text-decoration: underline;
+}

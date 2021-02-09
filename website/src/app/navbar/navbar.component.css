@@ -1,3 +1,10 @@
+.nv {
+  position: fixed;
+  width: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
 .bg-light {
   background-color: #19a5a5 !important;
 }
@@ -6,10 +13,6 @@
   color: white;
   padding-right: 15px;
 }
-
-/* a:active {
-  text-decoration: underline;
-} */
 
 a:hover {
   text-decoration: underline;
