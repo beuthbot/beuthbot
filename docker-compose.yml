@@ -145,8 +145,8 @@ services:
       - WETTER_ENDPOINT=http://weather:7000/weather
       - DATABASE_ENDPOINT=http://database_microservice:27016/database
       - CATS_ENDPOINT=http://cats:7001/cat
-      - REMINDER_ENDPOINT
       - SCRAPER_ENDPOINT=http://scraper:7007/scraper
+      - REMINDER_ENDPOINT
 
   mensa:
     build: mensa_microservice
@@ -160,6 +160,8 @@ services:
 
 networks:
   default:
+
+
     external:
       name: beuthbot_network
 
