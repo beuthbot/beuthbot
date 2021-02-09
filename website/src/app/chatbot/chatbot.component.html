@@ -1,6 +1,53 @@
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+<app-navbar></app-navbar>
+<div class="ch-component">
+  <div class="chatbot">
+    <div class="container">
+      <div class="justify-content-center col align-self-end box4 sb14">
+        <p style="margin: 0;">
+          Hallo! Ich bin der BHT-Bot.<br>Stelle mir Fragen zum Wetter oder dem Mensa Menü!
+          Oder benötigst du Informationen über das Personal oder bevorstehende Fristen & Termine an der BHT?<br><br>
+          Mit "help" liste ich dir all meine Funktionen und ihre (Beispiel-)Befehle auf.<br>
+          Welche Funktionen auf welcher Plattfform verfügbar sind, erfährst du
+          <a class="features_table" routerLink="/uebermich" fragment="features-table">hier</a> in der Features-Tabelle.
+        </p>
+      </div>
+      <div class="justify-content-center" *ngFor="let chatbot of chatBots">
+        <div class="col align-self-start box3 sb13">
+          {{chatbot.message}}
+        </div>
+        <br><br><br><br>
+        <div *ngIf="chatbot.message != 'help' && !chatbot.reply.includes('jpg' || 'png' || 'gif')">
+          <div class="col align-self-end box4 sb14 lastMessage" tabindex="1" #lastMessage>
+            {{chatbot.reply}}
+          </div>
+        </div>
+        <div *ngIf="chatbot.message === 'help'">
+            <div class="col align-self-end box4 sb14 lastMessage" tabindex="1" #lastMessage>
+              Wetter-Service:<br><li>Wie ist das Wetter in Berlin?</li><br>
+              Mensa-Service:<br><li>Was gibt es heute in der Mensa zu essen?</li><br>
+              Reminder-Service:<br><li>Erinnere mich morgen um 12 Uhr an meinen Zahnarzttermin</li>
+                <li>Zeig mir meine Erinnerungen</li><li>Lösche Erinnerung 1</li><br>
+              Personal-Service:<br><li>Gebe mir die Daten von Herrn Ziemer aus</li><br>
+              Termine- & Fristen-Service:<br><li>Nenne mir die Belegfrist für das Sommer Semester 2021</li><br>
+              Katzen-Service:<li>Zeige mir eine Katze</li><br>
+              Beachte! Der Reminder-Service ist nicht auf der Webseite verfügbar.
+            </div>
+        </div>
+        <div *ngIf="chatbot.reply.includes('jpg' || 'png' || 'gif') && chatbot.message != 'help'">
+          <div class="col align-self-end box4 sb14 lastMessage" tabindex="1" #lastMessage>
+            <img class="cat" src="{{chatbot.reply}}" alt="Katze">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="message-container">
+    <div class="row justify-content-center">
+      <input id="messageInput" class="form-control input-group mb-3 col-10" placeholder="Nachricht an BHT-Bot" aria-label="Nachricht an BHT-Bot" aria-describedby="button-addon2"
+        [(ngModel)]="cleanMessage">
+      <button type="button" class="btn btn-info btn-circle btn-send" (click)="chatbotReply(messageRequest)" onclick= "document.getElementById('messageInput').value =''">
+        <img class="send-icon" src="assets/icons/send-icon.svg" alt="paperplane">
+      </button>
+    </div>
+  </div>
 </div>
-{{message}}
-{{reply}}

@@ -1,10 +1,10 @@
-<div class="about">
+<div class="about" [ngStyle]="{ 'background': 'url(assets/background.png)' }">
   <h1>Du Studi, Ich Bot.</h1>
   <p class="intro">
     Während deines Studiums bin ich der treue Freund an deiner Seite, und versuche, dir das Leben<br>als Studi so leicht wie möglich zu machen!
   </p>
   <div class="d-flex justify-content-center">
-    <a routerLink="/chatbot">
+    <a routerLink="/bhtbot">
       <button type="button" class="btn btn-primary btn-lg">Zum Chatbot</button>
     </a>
   </div>
@@ -12,5 +12,65 @@
   <app-discord></app-discord>
   <app-github></app-github>
   <app-wiki></app-wiki>
-</div>
+  <div class="features-table" id="features-table">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>Features</th>
+          <th class="th-center">Telegram</th>
+          <th class="th-center">Discord</th>
+          <th class="th-center">Webseite</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Speech-to-Text</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/x-mark.svg" alt="no"></td>
+        <td><img src="assets/icons/x-mark.svg" alt="no"></td>
+      </tr>
+      <tr>
+        <th>Text-to-Speech</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/x-mark.svg" alt="no"></td>
+        <td><img src="assets/icons/x-mark.svg" alt="no"></td>
+      </tr>
+      <tr>
+        <th>Wetter-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+      </tr>
+      <tr>
+        <th>Mensa-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+      </tr>
+      <tr>
+        <th>Reminder-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/x-mark.svg" alt="no"></td>
+      </tr>
+      <tr>
+        <th>Personal-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+      </tr>
+      <tr>
+        <th>Termine- & Fristen-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+      </tr>
+      <tr>
+        <th>Katzen-Service</th>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+        <td><img src="assets/icons/check-mark.svg" alt="yes"></td>
+      </tr>
+    </table>
+  </div>
 <app-footer></app-footer>
+</div>

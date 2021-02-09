@@ -1,9 +1,8 @@
 .footer {
-  background-color: #19a5a5;
+  background-color: transparent;
   height: 50px;
   text-align: center;
-  color: white;
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .copyright {
