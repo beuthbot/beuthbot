@@ -53,7 +53,7 @@ services:
       - 7003:7003
     environment:
       - TTS_PORT=7003
-      
+
   scraper:
     build: scraper_microservice
     restart: always
@@ -61,7 +61,7 @@ services:
       - 9953:7007
     environment:
       - SCRAPER_PORT=7007
-      
+
   reminder:
     build: reminder_microservice
     restart: always
@@ -145,8 +145,10 @@ services:
       - WETTER_ENDPOINT=http://weather:7000/weather
       - DATABASE_ENDPOINT=http://database_microservice:27016/database
       - CATS_ENDPOINT=http://cats:7001/cat
+      - SCRAPER_ENDPOINT=http://scraper:7007/scraper
       - REMINDER_ENDPOINT
-      - SCRAPER_ENDPOINT
+      -
+
 
   mensa:
     build: mensa_microservice
