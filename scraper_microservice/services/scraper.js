@@ -1,8 +1,6 @@
 
-const url = 'https://www.beuth-hochschule.de/people';
-const imgUrl = 'https://medium.com/@stefanhyltoft/scraping-html-tables-with-nodejs-request-and-cheerio-e3c6334f661b'
+const profsUrl = 'https://www.beuth-hochschule.de/people';
 const terminUrl = "https://www.beuth-hochschule.de/termine"
-//const universalScraper = require('../../universalScraper/universalScraper'); // cannot be found in docker
 const universalScraper = require('./universalScraper');
 const utils = require('./utils');
 const fs = require('fs');
@@ -25,6 +23,7 @@ async function bewerbungsFristenBachelor(){
         });
     return result
 }
+
 async function bewerbungsFristenMaster(){
     let result
     await universalScraper.list(terminUrl,'#c13672','header','ul','li','.+?(?=[\t])','[0-9].+[.].+','time')
@@ -42,6 +41,7 @@ async function bewerbungsFristenMaster(){
     console.log(result)
     return result
 }
+
 async function belegFrist(){
     let result
     await universalScraper.list(terminUrl,'#c2359','h4','ul','li','.+?(?=[\t])','[0-9].+[.].+','time')
@@ -59,6 +59,7 @@ async function belegFrist(){
         });
     return result
 }
+
 async function vorlesungsZeiten(){
     let result
     await universalScraper.list(terminUrl,'#c21439','h4','ul','li','.+?(?=[\t])','[0-9].+[.].+','time')
@@ -94,18 +95,13 @@ async function beurlaubungFrist(){
     return result
 }
 
-//bewerbungsFristenBachelor()
-//belegFrist()
-//vorlesungsZeiten()
-//beurlaubungFrist()
-
 // Profs
 function updateProfessors(){
-    universalScraper.allTablesToJson("https://www.beuth-hochschule.de/people",'allProfs')
+    universalScraper.allTablesToJson(profsUrl,'allProfs')
 }
 
 async function getProfessors(){
-    return  universalScraper.allTablesToObject("https://www.beuth-hochschule.de/people",'allProfs')
+    return  universalScraper.allTablesToObject(profsUrl,'allProfs')
 }
 
 function getProfFromJSON(name){
@@ -139,8 +135,5 @@ async function getProf(name){
         return "error in scraper.getProf" + e
     }
 }
-
-// updateProfessors()
-//getProf("ziemer")
 
 module.exports = {bewerbungsFristenBachelor,bewerbungsFristenMaster,belegFrist,vorlesungsZeiten,beurlaubungFrist,updateProfessors,getProfFromJSON,getProf}
