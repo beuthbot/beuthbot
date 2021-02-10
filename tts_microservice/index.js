@@ -12,9 +12,9 @@ app.endpoint('tts', async (req, answ) => {
 
     let text = req.registryAnswer.answer.content
     let lang = 'de'
-    let name = "tts_test"
+    let name = "tts_audio"
     let format = "ogg"
-    let path =  name + "."+ format
+    let path =  name + "." + format
     const filePath = await new Promise((resolve, reject) => {
         ttsService.convertTextToSpeech(text,name,format,lang,function (err, result) {
             if(err){ reject(error) }
