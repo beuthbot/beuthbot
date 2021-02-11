@@ -2,7 +2,7 @@ const request = require('request');
 const x = require('x-ray')()
 const fs = require('fs')
 const tableScraper = require('table-scraper');
-
+const tabletojson = require('tabletojson').Tabletojson;
 /**
  * Scrape an Ul-elemenent and return its result as an Array
  * @param url
@@ -122,4 +122,4 @@ function tableToJson(url,filename,index) {
         })
 }
 
-module.exports = {tableToJson,allTablesToJson,allTablesToObject,download,list };
+module.exports = {tableToJson,allTablesToJson,allTablesToObject,download,list ,tabletojson};
