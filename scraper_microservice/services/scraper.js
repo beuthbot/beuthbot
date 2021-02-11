@@ -4,7 +4,6 @@ const universalScraper = require('./universalScraper');
 const utils = require('./utils');
 const fs = require('fs');
 const x = require('x-ray')()
-const request = require('request');
 const axios = require('axios').default;
 const https = require('https')
 const httpsAgent = new https.Agent({ keepAlive: true });
