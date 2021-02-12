@@ -101,7 +101,7 @@ function updateProfessors(){
 async function getProfessors(){
     return  universalScraper.allTablesToObject(profsUrl,'allProfs')
 }
-
+// previosly loaded data from tables of profsUrl
 function getProfFromJSON(name){
     updateProfessors();
     // let index = name.toLowerCase().charCodeAt(0) - 96
@@ -116,7 +116,6 @@ function getProfFromJSON(name){
 
     return utils.concatObjectsKeyValue(searchedProf)
 }
-
 async function getProf(name){
     // let index = name.toLowerCase().charCodeAt(0) - 96
     try {
@@ -134,6 +133,7 @@ async function getProf(name){
     }
 }
 
+// now loading via links of profs from tables of profsUrl
 async function getProfessorsPagesList(url) {
     try {
         let prof = {}
@@ -164,7 +164,7 @@ async function getProfessorsPagesList(url) {
                                         if (match)
                                             if (match.length > 0)
                                                 if (match[1].startsWith("/people")) {
-                                                    profLinks.push({name:potentialName.toLowerCase().replace("'","").split(",")[0],link:'https://www.beuth-hochschule.de'+ match[1]})
+                                                    profLinks.push({name:potentialName,link:'https://www.beuth-hochschule.de'+ match[1]})
                                                 }
                                 })
                                 if(index == td.length-1)resolve(profLinks)
@@ -191,11 +191,10 @@ async function getProfFromJson(name){
     let profLinks = JSON.parse(rawdata);
     let searchedProfLink;
     let wholeName = ""
-    let link = ""
     for (let i = 0, len = profLinks.length; i < len; i++) {
         if(profLinks[i].name.toString().toLowerCase().replace("'","").split(",")[0] == name.toLowerCase()){
             searchedProfLink = profLinks[i].link
-            wholeName = profLinks[i].name
+            wholeName = profLinks[i].name.replace(/,/g,", ")
         }
     }
     if(searchedProfLink) {
@@ -209,16 +208,21 @@ async function getProfFromJson(name){
                     let foundProf = tableHtmlList.map(function (table) {
                         return universalScraper.tabletojson.convert('<table>' + table + '</table>')[0];
                     })
-                    foundProf[0].unshift({"0":"Name:","1":wholeName})
-                    foundProf[0].push({"0":"Link:","1":searchedProfLink})
-                    resolve(foundProf);
-                    setTimeout(()=>{profListToJSON("https://www.beuth-hochschule.de/people")},1000)
+                    if(foundProf[0]) {
+                        foundProf[0].unshift({"0": "Name:", "1": wholeName})
+                        foundProf[0].push({"0": "Link:", "1": searchedProfLink})
+                        resolve(foundProf);
+                    }
+                    else {
+                        foundProf = [[{"0": "Es existieren leider keine näheren Daten zum gesuchten Professor. Siehe: ", "1": searchedProfLink}]]
+                        resolve(foundProf)
+                    }
                 });
             }).catch(error => {
                 resolve(getProfFromJson(name))
             });
         })
-        return utils.formatProf(result[0])
+        return (typeof result === "string") ? result : utils.formatProf(result[0])
     }else return "Es konnte kein/e Professor/in mit diesem Namen gefunden werden."
 }
 
