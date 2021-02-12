@@ -193,7 +193,7 @@ async function getProfFromJson(name){
     let wholeName = ""
     let link = ""
     for (let i = 0, len = profLinks.length; i < len; i++) {
-        if(profLinks[i].name.toLowerCase().replace("'","").split(",")[0] == name.toLowerCase()){
+        if(profLinks[i].name.toString().toLowerCase().replace("'","").split(",")[0] == name.toLowerCase()){
             searchedProfLink = profLinks[i].link
             wholeName = profLinks[i].name
         }
