@@ -15,10 +15,11 @@ app.endpoint('scraper', async (req, answ) => {
     if(intent == "lehrkraft" && entities.length>0){
         const prof = await new Promise((resolve, reject) => {
             scraperService.getProfFromJson(entities[0].value).then(function(result){
+                console.log("RESULT",result)
                     resolve(result)
             })
         })
-        answ.setContent(prof)
+        return answ.setContent(prof)
     }
     else if(intent == "vorlesungszeiten")
         return  answ.setContent(await scraperService.vorlesungsZeiten())

@@ -4,8 +4,10 @@ const universalScraper = require('./universalScraper');
 const utils = require('./utils');
 const fs = require('fs');
 const x = require('x-ray')()
+const request = require('request');
 const axios = require('axios').default;
 const https = require('https')
+
 const httpsAgent = new https.Agent({ keepAlive: true });
 // Termine
 async function bewerbungsFristenBachelor(){
@@ -136,15 +138,11 @@ async function getProfessorsPagesList(url) {
     try {
         let prof = {}
         let profLinks = []
-        const instance = axios.create({
-            httpsAgent
-
-        });
 
 
         const profPages = await new Promise(function(resolve, reject) {
 
-            axios.get(url, { httpsAgent }).then(resp => {
+            axios.get(url).then(resp => {
                 let body = resp.data
                 let regexLink = /\"(.*?)\"/g
                 let regexName = /\<(.*?)\>/g

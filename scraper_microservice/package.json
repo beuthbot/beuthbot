@@ -8,15 +8,12 @@
     "dev": "nodemon index.js"
   },
   "author": "Alexis Popovski",
-  "author": "Alexis Popovski",
   "dependencies": {
-    "dependencies": {
       "axios": "^0.21.1",
       "@bhtbot/bhtbotservice": "^0.0.16",
       "fs": "0.0.1-security",
       "request": "^2.88.2",
       "table-scraper": "^1.0.3",
       "x-ray": "^2.3.4"
-    }
   }
 }
